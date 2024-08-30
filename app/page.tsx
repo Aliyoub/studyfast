@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Head from "next/head";
 import Image from "next/image";
 import { Inter, Roboto, Montserrat } from "next/font/google";
-import Tts from "@/components/tts";
+import Tts from "../components/tts";
 // import BackgroundImage from '../public/presta-events-images/decoration.jpg';
 import TtsSettings from '@/components/settings/tts-settings';
 import { usePathname } from 'next/navigation';

@@ -1,80 +1,72 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
-
+import { texts } from "@/Texts";
 function Tts() {
   const [voices, setVoices] = useState([]);
-  const [selectedVoice, setSelectedVoice] = useState(null);
+  const [selectedVoice, setSelectedVoice] = useState(voices.find(voice => voice.name === 'Google US English'));
+  const [volume, setVolume] = useState(0.2);
 
-  
+  // const handleSelectChange = (event) => {
+  //   setSelectedVoice(event.target.value);
+  // };
+
   useEffect(() => {
-    if (
-        typeof window !== "undefined" &&
-        typeof window.SpeechSynthesisUtterance !== "undefined"
-      ) {
-        const utterance = new SpeechSynthesisUtterance("je suis content");
-      }
-    // if (
-    //   typeof window !== "undefined" &&
-    //   typeof window.SpeechSynthesisUtterance !== "undefined"
-    // ) {
-    //   const voicesList = window.speechSynthesis.getVoices();
-    //   setVoices(voicesList);
-    //   setSelectedVoice(voicesList[5]);
-
-    //   // const utterance = new SpeechSynthesisUtterance("je suis content");
-    //   window.speechSynthesis.speak(utterance);
-    // }
-
-    // Re-fetch voices list when it changes
-    const voicesChanged = () => {
-      const voicesList = window.speechSynthesis.getVoices();
-      setVoices(voicesList);
-      if (voicesList.length > 0 && !selectedVoice) {
-        setSelectedVoice(voicesList[12]); // Set the first voice if none selected
-      }
+    const loadVoices = () => {
+      const availableVoices = window.speechSynthesis.getVoices();
+      setVoices(availableVoices);
     };
 
-    window.speechSynthesis.addEventListener("voiceschanged", voicesChanged);
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }, []);
 
-    return () => {
-      window.speechSynthesis.removeEventListener(
-        "voiceschanged",
-        voicesChanged
-      );
-    };
-  }, [selectedVoice]);
+  const handleVoiceChange = (e) => {
+    const voiceIndex = e.target.value;
+    setSelectedVoice(voices[voiceIndex]);
+  };
 
   const speak = () => {
+    const utterance = new SpeechSynthesisUtterance(texts);
+
+    // Set the voice if it's selected and valid
     if (selectedVoice) {
-      // const utterance = new SpeechSynthesisUtterance();
-      // const utterance = new SpeechSynthesisUtterance("Hello, this is a test!");
+      // setSelectedVoice(utterance.voice)
+      // utterance.voice = selectedVoice;
       utterance.voice = selectedVoice;
-      window.speechSynthesis.speak(utterance);
+  
+      // Set the volume
+      utterance.volume = volume;
     }
+
+    // Speak the text
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
-    <div>
-      <h1>Select a Voice:</h1>
-      <select onChange={(e) => setSelectedVoice(voices[e.target.value])}>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <select onChange={handleVoiceChange}>
+        <option value="">Select a voice</option>
         {voices.map((voice, index) => (
           <option key={index} value={index}>
             {voice.name} ({voice.lang})
           </option>
         ))}
       </select>
-      <button onClick={speak()}>Speak</button>
-
-
-      <h1>React Text to Speech App </h1>
-      <ul>
-        {voices.map((voice, index) => (
-          <li key={index}>
-            {/* Render the name and language of the voice */}
-            {voice.name} ({voice.lang})
-          </li>
-        ))}
-      </ul>
+<div style={{marginTop:55}}>Ajuter le volume</div>
+      <input
+        type="range"
+        min="0"
+        max="5"
+        step="0.1"
+        value={volume}
+        onChange={(e) => setVolume(parseFloat(e.target.value))}
+      />
+      <button style={{marginTop: 55}} onClick={speak}>Ecouter</button>
     </div>
   );
 }
