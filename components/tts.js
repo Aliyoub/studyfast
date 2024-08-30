@@ -4,9 +4,15 @@ import { useEffect, useState } from "react";
 function Tts() {
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
-  const utterance = new SpeechSynthesisUtterance("je suis content");
 
+  
   useEffect(() => {
+    if (
+        typeof window !== "undefined" &&
+        typeof window.SpeechSynthesisUtterance !== "undefined"
+      ) {
+        const utterance = new SpeechSynthesisUtterance("je suis content");
+      }
     // if (
     //   typeof window !== "undefined" &&
     //   typeof window.SpeechSynthesisUtterance !== "undefined"
