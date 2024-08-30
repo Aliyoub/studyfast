@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter, Roboto, Montserrat } from "next/font/google";
 import Tts from "@/components/tts";
-import BackgroundImage from '../public/presta-events-images/decoration.jpg';
+// import BackgroundImage from '../public/presta-events-images/decoration.jpg';
 import TtsSettings from '@/components/settings/tts-settings';
 import { usePathname } from 'next/navigation';
 import { count } from 'console';
@@ -24,7 +24,7 @@ const montserrat_bold = Montserrat({
 export default function Home() {
 
   const backgroundStyle = {
-    backgroundImage: `url(${BackgroundImage})`,
+    // backgroundImage: `url(${BackgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',
