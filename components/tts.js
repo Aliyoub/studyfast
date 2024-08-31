@@ -1,10 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { texts } from "@/Texts";
+import { argum } from "@/argum";
+
 function Tts() {
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(voices.find(voice => voice.name === 'Google US English'));
   const [volume, setVolume] = useState(0.2);
+  const [rate, setRate] = useState(0.7);
+  const [pitch, setPitch] = useState(1);
 
   // const handleSelectChange = (event) => {
   //   setSelectedVoice(event.target.value);
@@ -26,7 +30,7 @@ function Tts() {
   };
 
   const speak = () => {
-    const utterance = new SpeechSynthesisUtterance(texts);
+    const utterance = new SpeechSynthesisUtterance(argum);
 
     // Set the voice if it's selected and valid
     if (selectedVoice) {
@@ -36,11 +40,17 @@ function Tts() {
   
       // Set the volume
       utterance.volume = volume;
+      utterance.rate =rate; // Vitesse
+      utterance.pitch = pitch; 
     }
 
     // Speak the text
     window.speechSynthesis.speak(utterance);
   };
+
+  const pause = ()=>{
+    window.speechSynthesis.pause();
+  }
 
   return (
     <div style={{
@@ -57,7 +67,7 @@ function Tts() {
           </option>
         ))}
       </select>
-<div style={{marginTop:55}}>Ajuter le volume</div>
+<div style={{marginTop:55}}>Ajuster le volume</div>
       <input
         type="range"
         min="0"
@@ -66,7 +76,30 @@ function Tts() {
         value={volume}
         onChange={(e) => setVolume(parseFloat(e.target.value))}
       />
+
+<div style={{marginTop:5}}>Pitch</div>
+      <input
+        type="range"
+        min="0.5"
+        max="2"
+        step="0.1"
+        value={pitch}
+        onChange={(e) => setVolume(parseFloat(e.target.value))}
+        />
+
+<div style={{marginTop:5}}>Ajuster la vitesse</div>
+      <input
+        type="range"
+        min="0.01"
+        max="1"
+        step="0.1"
+        value={rate}
+        onChange={(e) => setVolume(parseFloat(e.target.value))}
+        />
+
+
       <button style={{marginTop: 55}} onClick={speak}>Ecouter</button>
+      <button style={{marginTop: 5}} onClick={pause}>Pause</button>
     </div>
   );
 }
