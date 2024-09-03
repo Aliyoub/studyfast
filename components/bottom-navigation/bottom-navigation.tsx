@@ -55,7 +55,7 @@ const BottomNavigation = () => {
       </div>
       <div
         style={{
-          color: `${pathname === "/parametres" ? "#8B01F6" : "#fff"}`,
+          color: `${pathname === "/settings" ? "#8B01F6" : "#fff"}`,
           fontSize: 11,
         }}
         className="nav-item"
@@ -63,10 +63,10 @@ const BottomNavigation = () => {
         <FontAwesomeIcon style={{ width: 15 }} icon={faCog} />
         <Link
           style={{
-            color: `${pathname === "/parametres" ? "#8B01F6" : "#fff"}`,
+            color: `${pathname === "/settings" ? "#8B01F6" : "#fff"}`,
             fontSize: 11,
           }}
-          href="parametres"
+          href="settings"
         >
           Paramètres
         </Link>

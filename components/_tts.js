@@ -5,7 +5,9 @@ import { argum } from "@/argum";
 
 function Tts() {
   const [voices, setVoices] = useState([]);
-  const [selectedVoice, setSelectedVoice] = useState(voices.find(voice => voice.name === 'Google US English'));
+  const [selectedVoice, setSelectedVoice] = useState(
+    voices.find((voice) => voice.name === "Google US English")
+  );
   const [volume, setVolume] = useState(0.2);
   const [rate, setRate] = useState(0.7);
   const [pitch, setPitch] = useState(1);
@@ -25,8 +27,12 @@ function Tts() {
   }, []);
 
   const handleVoiceChange = (e) => {
-    const voiceIndex = e.target.value;
-    setSelectedVoice(voices[voiceIndex]);
+    if(e.target){
+      const voiceIndex = e.target.value;
+      setSelectedVoice(voices[voiceIndex]);
+
+      console.log('selectedVoice', selectedVoice)
+    }
   };
 
   const speak = () => {
@@ -37,28 +43,30 @@ function Tts() {
       // setSelectedVoice(utterance.voice)
       // utterance.voice = selectedVoice;
       utterance.voice = selectedVoice;
-  
+
       // Set the volume
       utterance.volume = volume;
-      utterance.rate =rate; // Vitesse
-      utterance.pitch = pitch; 
+      utterance.rate = rate; // Vitesse
+      utterance.pitch = pitch;
     }
 
     // Speak the text
     window.speechSynthesis.speak(utterance);
   };
 
-  const pause = ()=>{
+  const pause = () => {
     window.speechSynthesis.pause();
-  }
+  };
 
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <select onChange={handleVoiceChange}>
         <option value="">Select a voice</option>
         {voices.map((voice, index) => (
@@ -67,7 +75,7 @@ function Tts() {
           </option>
         ))}
       </select>
-<div style={{marginTop:55}}>Ajuster le volume</div>
+      <div style={{ marginTop: 55 }}>Ajuster le volume</div>
       <input
         type="range"
         min="0"
@@ -77,29 +85,50 @@ function Tts() {
         onChange={(e) => setVolume(parseFloat(e.target.value))}
       />
 
-<div style={{marginTop:5}}>Pitch</div>
+      <div style={{ marginTop: 5 }}>Pitch</div>
       <input
         type="range"
         min="0.5"
         max="2"
         step="0.1"
         value={pitch}
-        onChange={(e) => setVolume(parseFloat(e.target.value))}
-        />
+        onChange={(e) => setPitch(parseFloat(e.target.value))}
+      />
 
-<div style={{marginTop:5}}>Ajuster la vitesse</div>
+      <div style={{ marginTop: 5 }}>Ajuster la vitesse</div>
       <input
         type="range"
         min="0.01"
         max="1"
         step="0.1"
         value={rate}
-        onChange={(e) => setVolume(parseFloat(e.target.value))}
-        />
+        onChange={(e) => setRate(parseFloat(e.target.value))}
+      />
 
-
-      <button style={{marginTop: 55}} onClick={speak}>Ecouter</button>
-      <button style={{marginTop: 5}} onClick={pause}>Pause</button>
+      <button
+        style={{
+          marginTop: 55,
+          backgroundColor: "#005CC8",
+          color: "#E5E5E5",
+          paddingLeft: 50,
+          paddingRight: 50,
+        }}
+        onClick={speak}
+      >
+        Ecouter
+      </button>
+      <button
+        style={{
+          marginTop: 20,
+          backgroundColor: "#005CC8",
+          color: "#E5E5E5",
+          paddingLeft: 50,
+          paddingRight: 65,
+        }}
+        onClick={pause}
+      >
+        Pause
+      </button>
     </div>
   );
 }
