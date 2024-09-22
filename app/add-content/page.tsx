@@ -8,7 +8,8 @@ import ListItem from "@mui/material/ListItem";
 import { useRouter } from "next/navigation";
 import LongPressDoublePressComponent from "../../components/LongPressDoublePressComponent";
 
-export default function page() {
+ const Page = () =>{
+// export default function Page() {
   const [inputValue, setInputValue] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -190,3 +191,6 @@ export default function page() {
     </div>
   );
 }
+
+export default Page;
+
