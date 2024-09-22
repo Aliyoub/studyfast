@@ -88,7 +88,7 @@ import LongPressDoublePressComponent from "../../components/LongPressDoublePress
 
   const addContent = (e: any) => {
     e.preventDefault();
-    if (isValid) {
+    if (isValid && contents) {
       setContentsLength(contentsLength + 1);
       setContents([
         ...contents,
