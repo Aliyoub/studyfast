@@ -15,7 +15,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request) {
+export async function POST(request: any) {
   try {
     const body = await request.json();
     const { name, email } = body;
@@ -39,7 +39,7 @@ export async function POST(request) {
   }
 }
 
-export async function PUT(request) {
+export async function PUT(request: any) {
   try {
     const body = await request.json();
     const { id, name } = body;
@@ -62,7 +62,7 @@ export async function PUT(request) {
     );
   }
 }
-export async function DELETE(request) {
+export async function DELETE(request: any) {
   try {
     const body = await request.json();
     const { id } = body;

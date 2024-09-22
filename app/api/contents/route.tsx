@@ -21,7 +21,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request) {
+export async function POST(request: any) {
   try {
     const body = await request.json();
     const { contentTitle, contentDescription } = body;
@@ -48,13 +48,16 @@ export async function POST(request) {
   }
 }
 
-export async function PUT(request) {
+export async function PUT(request: any) {
   try {
     const body = await request.json();
-    const { contentTitle, contentDescription ,id } = body;
+    const { contentTitle, contentDescription, id } = body;
     if (!id || !contentTitle || !contentDescription) {
       return NextResponse.json(
-        { success: false, message: "content Title and content Description are required" },
+        {
+          success: false,
+          message: "content Title and content Description are required",
+        },
         { status: 400 }
       );
     }
@@ -72,7 +75,7 @@ export async function PUT(request) {
   }
 }
 
-export async function DELETE(request) {
+export async function DELETE(request: any) {
   try {
     const body = await request.json();
     const { id } = body;
