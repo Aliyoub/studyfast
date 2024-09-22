@@ -17,7 +17,7 @@ function ComponentVisibility() {
           <div style={{ height: '200vh' }} />
         </div>
       );
-  )
+  // )
 }
 
 export default ComponentVisibility
