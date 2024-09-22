@@ -1,15 +1,10 @@
-// "use client";
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import Image from "next/image";
+import React from 'react'
+// import Head from "next/head";
+// import Image from "next/image";
 import { Inter, Roboto, Montserrat } from "next/font/google";
-import Tts from "../components/tts";
-// import BackgroundImage from '../public/presta-events-images/decoration.jpg';
-import TtsSettings from "@/components/settings/tts-settings";
-import { usePathname } from "next/navigation";
-import { count } from "console";
+// import Header from "../components/header";
 import ViewWithBorderRadius from "@/components/ViewWithBorderRadius/ViewWithBorderRadius";
-// import { useRouter } from 'next/router';
+import BottomNavigation from "@/components/bottom-navigation/bottom-navigation";
 
 const montserrat = Montserrat({
   weight: "400",
@@ -21,20 +16,13 @@ const montserrat_bold = Montserrat({
   subsets: ["latin"],
 });
 
-export default function Home() {
-  const backgroundStyle = {
-    // backgroundImage: `url(${BackgroundImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    height: "100vh",
-    width: "100%",
-  };
-  // const router = useRouter();
-  // const { asPath } = router;
-
+function Home() {
   return (
     <main className={montserrat.className}>
-        <ViewWithBorderRadius />
+      <ViewWithBorderRadius />
+      <BottomNavigation />
     </main>
   );
 }
+
+export default Home

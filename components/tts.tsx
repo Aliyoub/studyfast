@@ -1,29 +1,39 @@
-
-
 "use client";
 
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
+
 import { useEffect, useState } from "react";
 import { texts } from "@/Texts";
 import { argum } from "@/argum";
 import Select from "react-select";
+
 import styles from "../app/settings/selectStyle.module.css";
 
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../store/store";
+import { ttsVolume } from '../store/slices/tts/ttsVolumeSlice';
+import { ttsPitch } from '../store/slices/tts/ttsPitchSlice';
+import { ttsRate } from '../store/slices/tts/ttsRateSlice';
+
 export default function Tts() {
-  const [tempVoices, setTempVoices] = useState([]);
+  const dispatch = useDispatch<AppDispatch>();
+  // const volumeFromStore = useSelector(
+  //   (state: RootState) => state.tts.value);
+  const volumeFromStore = useSelector((state: RootState) => state.ttsVolume.value);
+  const pitchFromStore = useSelector((state: RootState) => state.ttsPitch.value);
+  const rateFromStore = useSelector((state: RootState) => state.ttsRate.value);
+
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
-  const [volume, setVolume] = useState(0.2);
-  const [rate, setRate] = useState(0.7);
-  const [pitch, setPitch] = useState(1);
-
+  const [volume, setVolume] = useState(volumeFromStore);
+  const [pitch, setPitch] = useState(pitchFromStore);
+  const [rate, setRate] = useState(rateFromStore);
 
   useEffect(() => {
     const loadVoices = () => {
       const availableVoices: any = window.speechSynthesis.getVoices();
       // console.log("availableVoices", availableVoices[0]);
-      setVoices(availableVoices);
+      // setVoices(availableVoices);
 
       const tempVoices: any = [];
       availableVoices.forEach((voice: any, index: number) => {
@@ -33,7 +43,7 @@ export default function Tts() {
           index: index,
         });
       });
-      setTempVoices(tempVoices);
+      setVoices(tempVoices);
     };
 
     loadVoices();
@@ -43,7 +53,7 @@ export default function Tts() {
   const handleVoiceChange = (val: any) => {
     // const voiceIndex = e.target.value;
     // setSelectedVoice(voices[voiceIndex]);
-    console.log('val', val)
+    console.log("val", val);
     console.log("setSelectedVoice", voices[val.index]);
 
     setSelectedVoice(voices[val.index]);
@@ -72,7 +82,6 @@ export default function Tts() {
     utterance.pitch = pitch;
     // Speak the text
     window.speechSynthesis.speak(utterance);
-
   };
 
   const pause = () => {
@@ -103,7 +112,7 @@ export default function Tts() {
         <Select
           defaultValue={selectedVoice}
           onChange={(val: any) => handleVoiceChange(val)}
-          options={tempVoices}
+          options={voices}
           className={styles.selectStyle}
           classNamePrefix="react-select__control"
         />
@@ -111,43 +120,52 @@ export default function Tts() {
 
       {/* ================================================================================== */}
 
-      <div style={{ marginTop: 55 }}>Ajuster le volume {volume}</div>
+      <div style={{ marginTop: 55 }}>Volume: {volume}</div>
       <input
         type="range"
         min="0"
-        max="5"
-        step="0.1"
+        max="1"
+        step="0.01"
         value={volume}
-        onChange={(e) => setVolume(parseFloat(e.target.value))}
+        onChange={(e) => {
+          setVolume(parseFloat(e.target.value));
+          dispatch(ttsVolume(e.target.value));
+        }}
       />
 
       {/* ================================================================================== */}
-      <div style={{ marginTop: 15 }}>Pitch {pitch}</div>
+      <div style={{ marginTop: 15 }}>Pitch: {pitch}</div>
       <input
         type="range"
         min="0.5"
         max="2"
         step="0.1"
         value={pitch}
-        onChange={(e) => setPitch(parseFloat(e.target.value))}
+        onChange={(e) => {
+          setPitch(parseFloat(e.target.value));
+          dispatch(ttsPitch(e.target.value));
+        }}
       />
 
       {/* ================================================================================== */}
 
-      <div style={{ marginTop: 15 }}>Ajuster la vitesse {rate}</div>
+      <div style={{ marginTop: 15 }}>Vitesse: {rate}</div>
       <input
         type="range"
-        min="0.01"
-        max="1"
+        min="0.1"
+        max="5"
         step="0.1"
         value={rate}
-        onChange={(e) => setRate(parseFloat(e.target.value))}
+        onChange={(e) => {
+          setRate(parseFloat(e.target.value));
+          dispatch(ttsRate(e.target.value));
+        }}
       />
 
       <button
         style={{
           marginTop: 55,
-          backgroundColor: "#005CC8",
+          backgroundColor: "#0175FF",
           color: "#E5E5E5",
           paddingLeft: 50,
           paddingRight: 50,
