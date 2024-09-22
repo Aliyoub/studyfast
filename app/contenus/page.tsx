@@ -81,14 +81,15 @@ function Home() {
     <>
      <div>
        <h1>Users List</h1>
-       {console.log('users', users)}
+       {/* {console.log('users', users)}
        <ul>
          {users.map((user, key) => (
            <li key={user.id}>
              {user.name} - {user.email}
            </li>
          ))}
-       </ul>
+       </ul> */}
+       ok
      </div>
     </>
   );

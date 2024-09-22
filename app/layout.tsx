@@ -9,8 +9,6 @@ import "./styles.css";
 import Header from "@/components/header";
 import ViewWithBorderRadius from "@/components//ViewWithBorderRadius/ViewWithBorderRadius";
 import BottomNavigation from "@/components/bottom-navigation/bottom-navigation";
-import Mytest from './mytest';
-
 
 const inter = Inter({ subsets: ["latin"] });
 
