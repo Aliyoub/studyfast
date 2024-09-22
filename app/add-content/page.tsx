@@ -81,7 +81,7 @@ import LongPressDoublePressComponent from "../../components/LongPressDoublePress
   };
 
   // On récupère les valeurs d'un item après un clic dessus
-  const getItemValues = (item) => {
+  const getItemValues = (item: any) => {
     setSelectedItem(item);
     console.log("getItemValues", item);
   };
