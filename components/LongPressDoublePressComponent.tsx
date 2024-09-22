@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const LongPressDoublePressComponent = ({children}) => {
+const LongPressDoublePressComponent = ({children}:any) => {
   const [clicks, setClicks] = useState(0);
   const [isLongPress, setIsLongPress] = useState(false);
   const longPressDuration = 500; // Milliseconds
