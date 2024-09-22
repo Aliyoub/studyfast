@@ -124,7 +124,7 @@ import LongPressDoublePressComponent from "../../components/LongPressDoublePress
         <h1>contents List</h1>
         <List>
           {contents.map((content, key) => (
-            <LongPressDoublePressComponent>
+            <LongPressDoublePressComponent key={content.id}>
             <ListItem
                 sx={{
                   borderBottom: "1px solid",

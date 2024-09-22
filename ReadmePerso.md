@@ -7,3 +7,6 @@ npx next build
 git add .
 git commit -m "another commit"
 git push
+
+<!-- A spécifier sur Vercel -->
+https://github.com/Aliyoub/studyfast
