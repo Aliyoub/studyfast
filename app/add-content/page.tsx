@@ -14,7 +14,7 @@ import LongPressDoublePressComponent from "../../components/LongPressDoublePress
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isValid, setIsValid] = useState(true);
-  const [contents, setContents] = useState([]);
+  const [contents, setContents] = useState<any[]>([]);
   const [contentsLength, setContentsLength] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
   useEffect(() => {
@@ -88,7 +88,7 @@ import LongPressDoublePressComponent from "../../components/LongPressDoublePress
 
   const addContent = (e: any) => {
     e.preventDefault();
-    if (isValid && contents) {
+    if (isValid) {
       setContentsLength(contentsLength + 1);
       setContents([
         ...contents,
