@@ -5,7 +5,7 @@ const LongPressDoublePressComponent = ({children}:any) => {
   const [isLongPress, setIsLongPress] = useState(false);
   const longPressDuration = 500; // Milliseconds
 
-  let timerId;
+  let timerId: any;
 
   const handleMouseDown = () => {
     timerId = setTimeout(() => {
