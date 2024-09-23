@@ -80,7 +80,7 @@ function Home() {
   return (
     <>
      <div>
-       <h1>Users List</h1>
+       <h1>Users List...</h1>
        {/* {console.log('users', users)}
        <ul>
          {users.map((user, key) => (
