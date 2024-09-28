@@ -23,13 +23,15 @@ const GamifiedChart = () => {
   }, [points]);
 
   useEffect(() => {
-    const ctx = chartRef.current.getContext('2d');
+    if (chartRef.current) {
+      const ctx = chartRef.current.getContext('2d');
+    // const ctx = chartRef.current.getContext('2d');
 
     if (chartInstanceRef.current) {
       chartInstanceRef.current.destroy();
     }
 
-    chartInstanceRef.current = new Chart(ctx, {
+    chartInstanceRef.current = new Chart(ctx!, {
       type: 'line',
       data: {
         labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
@@ -53,7 +55,7 @@ const GamifiedChart = () => {
         chartInstanceRef.current.destroy();
       }
     };
-
+  }
   }, [chartData]);
 
   // Simulate progress updates
