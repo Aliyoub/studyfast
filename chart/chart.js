@@ -4,11 +4,18 @@ import { Chart, LineController, LineElement, PointElement, LinearScale, Category
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale);
 
 const ProgressChart = () => {
-  const chartRef = useRef(null);
+//   const chartRef = useRef(null);
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const chartInstanceRef = useRef<Chart | null>(null);
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
-    new Chart(ctx, {
+
+    if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+      }
+
+    chartInstanceRef.current = new Chart(ctx, {
       type: 'line',
       data: {
         labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
@@ -26,6 +33,11 @@ const ProgressChart = () => {
         }
       }
     });
+    return () => {
+        if (chartInstanceRef.current) {
+          chartInstanceRef.current.destroy();
+        }
+      };
   }, []);
 
   return <canvas ref={chartRef} width="400" height="200"></canvas>;

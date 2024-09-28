@@ -10,3 +10,5 @@ git push
 
 <!-- A spécifier sur Vercel -->
 https://github.com/Aliyoub/studyfast
+<!-- Vérification du déploiement -->
+https://vercel.com/aliyoubs-projects/studyfast/deployments
