@@ -10,8 +10,8 @@ const GamifiedChart = () => {
   const [level, setLevel] = useState(1);
   const [chartData, setChartData] = useState([0, 0, 0, 0]);
 
-  const chartRef = useRef(null); // Reference to the canvas element
-  const chartInstanceRef = useRef(null); // Reference to the chart instance
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const chartInstanceRef = useRef<Chart | null>(null);
 
   const gainPoints = () => {
     setPoints(prevPoints => prevPoints + 10);
@@ -47,6 +47,13 @@ const GamifiedChart = () => {
         }
       }
     });
+
+    return () => {
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+      }
+    };
+
   }, [chartData]);
 
   // Simulate progress updates
