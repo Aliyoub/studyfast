@@ -9,11 +9,13 @@ import {
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import "./BottomNavigation.css";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import { categories } from "@/Texts copy";
 
 const BottomNavigation = () => {
   const pathname: any = usePathname();
+  const router: any = useRouter()
 
   return (
     <div className="bottom-navigation">
@@ -79,15 +81,16 @@ const BottomNavigation = () => {
         className="nav-item"
       >
         <FontAwesomeIcon style={{ width: 15 }} icon={faList} />
-        <Link
+        <span
           style={{
             color: `${pathname === "/categories" ? "#8B01F6" : "#fff"}`,
             fontSize: 11,
           }}
-          href="categories"
+          // href="./categories"
+          onClick={()=> router.push("/categories")}
         >
           Categories
-        </Link>
+        </span>
       </div>
     </div>
   );

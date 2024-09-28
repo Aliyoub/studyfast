@@ -24,7 +24,7 @@ export async function GET() {
 export async function POST(request: any) {
   try {
     const body = await request.json();
-    const { contentTitle, contentDescription } = body;
+    const { contentTitle, contentDescription, isSelectedItem } = body;
     if (!contentTitle || !contentDescription) {
       return NextResponse.json(
         {
@@ -35,7 +35,7 @@ export async function POST(request: any) {
       );
     }
 
-    insertContent(contentTitle, contentDescription);
+    insertContent(contentTitle, contentDescription, isSelectedItem);
     return NextResponse.json({
       success: true,
       message: "Content created successfully",
@@ -51,7 +51,7 @@ export async function POST(request: any) {
 export async function PUT(request: any) {
   try {
     const body = await request.json();
-    const { contentTitle, contentDescription, id } = body;
+    const { contentTitle, contentDescription, id, isSelectedItem } = body;
     if (!id || !contentTitle || !contentDescription) {
       return NextResponse.json(
         {
@@ -62,7 +62,7 @@ export async function PUT(request: any) {
       );
     }
 
-    updateContent(contentTitle, contentDescription, id);
+    updateContent(contentTitle, contentDescription, id, isSelectedItem);
     return NextResponse.json({
       success: true,
       message: "Content updated successfully",

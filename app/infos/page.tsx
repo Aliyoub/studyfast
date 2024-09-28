@@ -1,25 +1,68 @@
-
 'use client'
-import React from 'react';
-import { increment, decrement } from '../../store/slices/counterSlice';
-import {deleteContent } from '../../store/slices/content/contentSlice';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../../store/store';
 
+import { useEffect, useRef, useState } from 'react';
+import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale } from 'chart.js';
 
-function Home() {
-    const dispatch = useDispatch<AppDispatch>();
-    const count = useSelector((state: RootState) => state.counter.value);
-    const content = useSelector((state: RootState) => state.content.items);
+Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale);
 
-return (
-    <>
-    {console.log('content', content)}
-    <h1>Counter: {count}</h1>
-    <button onClick={() => dispatch(increment())}>Increment</button>
-    <button onClick={() => dispatch(deleteContent(1))}>deleteContent</button>
-    </>
-);
-}
+const GamifiedChart = () => {
+  const [points, setPoints] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [chartData, setChartData] = useState([0, 0, 0, 0]);
 
-export default Home
+  const chartRef = useRef(null); // Reference to the canvas element
+  const chartInstanceRef = useRef(null); // Reference to the chart instance
+
+  const gainPoints = () => {
+    setPoints(prevPoints => prevPoints + 10);
+  };
+
+  useEffect(() => {
+    if (points >= 100) setLevel(2);
+    if (points >= 200) setLevel(3);
+  }, [points]);
+
+  useEffect(() => {
+    const ctx = chartRef.current.getContext('2d');
+
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.destroy();
+    }
+
+    chartInstanceRef.current = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        datasets: [{
+          label: 'User Points',
+          data: chartData,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          fill: false,
+        }]
+      },
+      options: {
+        scales: {
+          x: { type: 'category' },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  }, [chartData]);
+
+  // Simulate progress updates
+  useEffect(() => {
+    setChartData(prev => [...prev.slice(1), points]);
+  }, [points]);
+
+  return (
+    <div>
+      <h2>Your Gamified Progress</h2>
+      <p>Points: {points}</p>
+      <p>Level: {level}</p>
+      <button onClick={gainPoints}>Gain Points</button>
+      <canvas ref={chartRef} width="400" height="200"></canvas>
+    </div>
+  );
+};
+
+export default GamifiedChart;

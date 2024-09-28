@@ -11,6 +11,7 @@ const LongPressDoublePressComponent = ({children}:any) => {
     timerId = setTimeout(() => {
       setIsLongPress(true);
       console.log('Long Press');
+      alert('long press')
     }, longPressDuration);
   };
 
