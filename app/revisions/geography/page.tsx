@@ -10,7 +10,7 @@ const FlippingCards = () => {
 
   const [isFlipped, setIsFlipped] = useState({});
 
-  const handleFlip = (id: number) => {
+  const handleFlip = (id: any) => {
     setIsFlipped((prev) => ({
       ...prev,
       [id]: !prev[id],
