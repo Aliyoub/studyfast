@@ -5,7 +5,7 @@ import { myColors } from "../myConstants/colors/index";
 import { useMemo } from "react";
 
 export default function PlusButton(props: {
-  onClick: ((event) => void) | undefined;
+  onClick: ((event: any) => void) | undefined;
   // onClick: ((event: GestureResponderEvent) => void) | undefined;
 }) {
   return useMemo(
