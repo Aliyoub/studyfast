@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const FlippingCards = () => {
   const router = useRouter();
 
-  const [isFlipped, setIsFlipped] = useState({});
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
