@@ -75,7 +75,7 @@ const FlippingCards = () => {
             background-color: #264BC0;
           }
           .back {
-            background-color: #f39c12;
+            background-color: #0491FE;
           }
         `}</style>
       </div>

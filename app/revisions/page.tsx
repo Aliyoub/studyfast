@@ -37,7 +37,7 @@ const FlippingList = () => {
             border: "1px solid #000000,",
             borderRadius: 20,
             margin: "50 auto",
-            background: "teal",
+            background: "#0491FE",
           }}
           onClick={flipCard}
         >
