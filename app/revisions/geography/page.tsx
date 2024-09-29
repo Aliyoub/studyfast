@@ -43,7 +43,7 @@ const FlippingCards = () => {
             <div
               className="card back"
               key="back"
-              onClick={() => handleFlip(geographyCard.id)}
+              onClick={handleFlip}
             >
               {geographyCard.back}
             </div>
