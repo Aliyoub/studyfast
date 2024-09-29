@@ -20,17 +20,17 @@ const FlippingCards = () => {
         Retour
       </h2>
       <div className="card-container">
-        {HistoryCards.map((geographyCard) => (
+        {HistoryCards.map((historyCard) => (
           <ReactCardFlip
-            key={geographyCard.id}
-            isFlipped={isFlipped[geographyCard.id]}
+            key={historyCard.id}
+            isFlipped={isFlipped}
           >
             <div className="card front" key="front" onClick={handleFlip}>
-              {geographyCard.front}
+              {historyCard.front}
             </div>
 
             <div className="card back" key="back" onClick={handleFlip}>
-              {geographyCard.back}
+              {historyCard.back}
             </div>
           </ReactCardFlip>
         ))}
