@@ -10,11 +10,8 @@ const FlippingCards = () => {
 
   const [isFlipped, setIsFlipped] = useState({});
 
-  const handleFlip = (id: number) => {
-    setIsFlipped((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
   };
 
   return (
@@ -28,19 +25,11 @@ const FlippingCards = () => {
             key={geographyCard.id}
             isFlipped={isFlipped[geographyCard.id]}
           >
-            <div
-              className="card front"
-              key="front"
-              onClick={() => handleFlip(geographyCard.id)}
-            >
+            <div className="card front" key="front" onClick={handleFlip}>
               {geographyCard.front}
             </div>
 
-            <div
-              className="card back"
-              key="back"
-              onClick={() => handleFlip(geographyCard.id)}
-            >
+            <div className="card back" key="back" onClick={handleFlip}>
               {geographyCard.back}
             </div>
           </ReactCardFlip>
@@ -68,7 +57,7 @@ const FlippingCards = () => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           }
           .front {
-            background-color: #264BC0;
+            background-color: #264bc0;
           }
           .back {
             background-color: #f39c12;

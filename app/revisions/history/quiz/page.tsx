@@ -9,7 +9,7 @@ const HistoryQuiz = () => {
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
-  const handleAnswer = (selectedOption) => {
+  const handleAnswer = (selectedOption: any) => {
     if (selectedOption === questions[currentQuestion].answer) {
       setScore(score + 1);
     }
