@@ -8,14 +8,18 @@ import { useRouter } from "next/navigation";
 const FlippingCards = () => {
   const router = useRouter();
 
-  const [isFlipped, setIsFlipped] = useState({});
+  const [isFlipped, setIsFlipped] = useState(false);
+  // const [isFlipped, setIsFlipped] = useState({});
 
-  const handleFlip = (id: any) => {
-    setIsFlipped((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
   };
+  // const handleFlip = (id) => {
+  //   setIsFlipped((prev) => ({
+  //     ...prev,
+  //     [id]: !prev[id],
+  //   }));
+  // };
 
   return (
     <>
@@ -26,12 +30,12 @@ const FlippingCards = () => {
         {geographyCards.map((geographyCard) => (
           <ReactCardFlip
             key={geographyCard.id}
-            isFlipped={isFlipped[geographyCard.id]}
+            isFlipped={isFlipped}
           >
             <div
               className="card front"
               key="front"
-              onClick={() => handleFlip(geographyCard.id)}
+              onClick={handleFlip}
             >
               {geographyCard.front}
             </div>
