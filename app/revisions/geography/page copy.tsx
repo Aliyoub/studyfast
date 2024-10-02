@@ -2,16 +2,27 @@
 
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import { HistoryCards } from "./historyCards";
+import { geographyCards } from "./geographyCards";
 import { useRouter } from "next/navigation";
 
 const FlippingCards = () => {
   const router = useRouter();
 
-  const [isFlipped, setIsFlipped] = useState(false);
+  // const [isFlipped, setIsFlipped] = useState({});
+  // const [flippedCards, setFlippedCards] = useState<boolean[]>([false, false, false]);
+  const [flippedCards, setFlippedCards] = useState<boolean[]>([false, false, false]);
 
-  const handleFlip = () => {
-    setIsFlipped(!isFlipped);
+  // const handleFlip = (id: number) => {
+  //   setIsFlipped((prev) => ({
+  //     ...prev,
+  //     [id]: !prev[id],
+  //   }));
+  // };
+
+  const handleFlip = (index: number) => {
+    setFlippedCards((prev) =>
+      prev.map((flip, i) => (i === index ? !flip : flip))
+    );
   };
 
   return (
@@ -20,17 +31,25 @@ const FlippingCards = () => {
         Retour
       </h2>
       <div className="card-container">
-        {HistoryCards.map((historyCard) => (
+        {geographyCards.map((geographyCard) => (
           <ReactCardFlip
-            key={historyCard.id}
-            isFlipped={isFlipped}
+            key={geographyCard.id}
+            isFlipped={isFlipped[geographyCard.id]}
           >
-            <div className="card front" key="front" onClick={handleFlip}>
-              {historyCard.front}
+            <div
+              className="card front"
+              key="front"
+              onClick={() => handleFlip(geographyCard.id)}
+            >
+              {geographyCard.front}
             </div>
 
-            <div className="card back" key="back" onClick={handleFlip}>
-              {historyCard.back}
+            <div
+              className="card back"
+              key="back"
+              onClick={() => handleFlip(geographyCard.id)}
+            >
+              {geographyCard.back}
             </div>
           </ReactCardFlip>
         ))}
@@ -57,7 +76,7 @@ const FlippingCards = () => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           }
           .front {
-            background-color: #264bc0;
+            background-color: #264BC0;
           }
           .back {
             background-color: #f39c12;

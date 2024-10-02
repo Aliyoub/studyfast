@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import { geographyCards, flippedCards } from "./geographyCards";
+import { historyCards, flippedCards } from "./historyCards";
 import { useRouter } from "next/navigation";
 
 const FlippingCards = () => {
   const router = useRouter();
+
   const [isFlippedCard, setIsFlippedCards] = useState<boolean[]>(flippedCards);
 
   const handleFlip = (index: number) => {
@@ -21,25 +22,17 @@ const FlippingCards = () => {
         Retour
       </h2>
       <div className="card-container">
-        {geographyCards.map((geographyCard) => (
+        {historyCards.map((historyCard) => (
           <ReactCardFlip
-            key={geographyCard.id}
-            isFlipped={isFlippedCard[geographyCard.id]}
+            key={historyCard.id}
+            isFlipped={isFlippedCard[historyCard.id]}
           >
-            <div
-              className="card front"
-              key="front"
-              onClick={() => handleFlip(geographyCard.id)}
-            >
-              {geographyCard.front}
+            <div className="card front" key="front" onClick={() => handleFlip(historyCard.id)}>
+              {historyCard.front}
             </div>
 
-            <div
-              className="card back"
-              key="back"
-              onClick={() => handleFlip(geographyCard.id)}
-            >
-              {geographyCard.back}
+            <div className="card back" key="back" onClick={() => handleFlip(historyCard.id)}>
+              {historyCard.back}
             </div>
           </ReactCardFlip>
         ))}
@@ -66,12 +59,13 @@ const FlippingCards = () => {
             transition: transform 0.6s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             // text-align: justify;
-            overflow: scroll;
+            overflow: scroll; 
           }
           .front {
             background-color: #264BC0;
           }
           .back {
+            // background-color: #A4FCEF;
             background-color: #6586f0;
             // background-color: #f39c12;
           }
