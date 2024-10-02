@@ -1,10 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 
 const Camera = () => {
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
+//   const videoRef = useRef(null);
+//   const canvasRef = useRef(null);
+//   const [isCameraOn, setIsCameraOn] = useState(false);
+//   const [imageSrc, setImageSrc] = useState("");
+
+
+  const videoRef = useRef<HTMLVideoElement | null>(null); // Explicitly define the ref type
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isCameraOn, setIsCameraOn] = useState(false);
-  const [imageSrc, setImageSrc] = useState("");
+  const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
     if (isCameraOn) {
