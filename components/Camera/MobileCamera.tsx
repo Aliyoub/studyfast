@@ -43,7 +43,7 @@ const MobileCamera = () => {
   return (
     <div>
       <button onClick={() => setIsCameraOn(!isCameraOn)}>
-        {isCameraOn ? 'Turn Off Camera' : 'Turn On Camera'}
+        {isCameraOn ? 'Turn Off Camera' : 'Turn On Camera!'}
       </button>
 
       {isCameraOn && (
