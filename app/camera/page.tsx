@@ -1,11 +1,12 @@
 'use client'
 
-import Camera from '../../components/Camera/Camera'
-import Camera2 from '../../components/Camera/Camera2'
+import MobileCamera from '../../components/Camera/MobileCamera'
+// import Camera from '../../components/Camera/Camera'
+// import Camera2 from '../../components/Camera/Camera2'
 
 export default function Home() {
   return (
-    <Camera2 />
+    <MobileCamera />
     // <Camera />
   )
 }
