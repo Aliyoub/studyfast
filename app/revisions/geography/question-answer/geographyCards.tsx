@@ -238,31 +238,13 @@ export const geographyCards = [
   {
     id: 40,
     front: " Qu'est-ce qu'une enclave ?",
-    back: "Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.Une enclave est un territoire entièrement entouré par un autre État, \
-    sans accès direct à la mer ou à d'autres territoires.",
-    // back: "Une enclave est un territoire entièrement entouré par un autre État, sans accès direct à la mer ou à d'autres territoires.",
-    isFlippedCard: false
+    back: "Une enclave est un territoire entièrement entouré par un autre État, sans accès direct à la mer ou à d'autres territoires.",
+    isFlippedCard: false 
   },
 ];
 
 export const flippedCards:any =[]
 geographyCards.map((geographyCard, index) => (
   flippedCards.push(geographyCard.isFlippedCard),
-  flippedCards.push(false))
+  flippedCards.push(false)) // pour prendre en compte le dernier élément de la liste
 )

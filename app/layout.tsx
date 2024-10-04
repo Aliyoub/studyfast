@@ -1,15 +1,17 @@
-'use client';
-import { ReactNode } from 'react';
+"use client";
+import { ReactNode } from "react";
 // import type { Metadata } from "next";
-import { Provider } from 'react-redux';
-import { store } from '../store/store';
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 import { Inter, Roboto, Montserrat } from "next/font/google";
 import "./globals.css";
 import "./styles.css";
 import Header from "@/components/header";
 import ViewWithBorderRadius from "@/components//ViewWithBorderRadius/ViewWithBorderRadius";
 import BottomNavigation from "@/components/bottom-navigation/bottom-navigation";
-
+// import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+// import { AcUnit } from '@mui/icons-material';
 const inter = Inter({ subsets: ["latin"] });
 
 const montserrat = Montserrat({
@@ -35,19 +37,29 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-
 const Layout = ({ children }: LayoutProps) => {
   return (
-    
-      <html lang="fr">
+    <html lang="fr">
       <body className={montserrat.className}>
         {/* <body className={inter.className}> */}
         {/* <Header /> */}
-          <main><Provider store={store}>{children}</Provider></main>
-        <BottomNavigation />
+        <main>
+          <Provider store={store}>{children}</Provider>
+        </main>
+        <BottomNavigation  />
+        {/* <BottomNavigation
+          showLabels
+          value={"value"}
+          onChange={(event, newValue) => {
+            // setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction label="Recents" icon={<AcUnit />} />
+          <BottomNavigationAction label="Favorites" icon={<AcUnit />} />
+          <BottomNavigationAction label="Nearby" icon={<AcUnit />} />
+        </BottomNavigation> */}
       </body>
     </html>
-    
   );
 };
 

@@ -73,7 +73,7 @@ isFlippedCard: false
 export const flippedCards:any =[]
 historyCards.map((geographyCard, index) =>(
   flippedCards.push(geographyCard.isFlippedCard),
-  flippedCards.push(false))
+  flippedCards.push(false)) // pour prendre en compte le dernier élément de la liste
 )
 
 

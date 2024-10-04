@@ -21,6 +21,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/parametres/page.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/parametres/page.js", "components/chart/chart.js", "components/gamify/gamify.js"],
   "exclude": ["node_modules"]
+  
 }
