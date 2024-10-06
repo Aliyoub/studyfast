@@ -14,6 +14,7 @@ export default function Home() {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#264BC0",
+        height: "100%"
       }}
     >
       <h2 style={{ fontSize: 20, fontWeight: "bold", marginTop: 30 }}>
