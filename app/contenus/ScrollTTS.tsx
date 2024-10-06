@@ -18,6 +18,18 @@ function ScrollTTS() {
     }
   }, []);
 
+
+  function changePreviousSiblingStyle(element: HTMLElement) {
+    const previousElement = element.previousSibling;
+  
+    // Check if previous sibling is an HTMLElement
+    if (previousElement instanceof HTMLElement) {
+      previousElement.style.color = '#FFFFFF';  // Change style
+    } else {
+      console.log('Previous sibling is not an HTML element');
+    }
+  }
+
   const speakText = () => {
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
@@ -39,12 +51,9 @@ function ScrollTTS() {
 
           // Get the word element and scroll to it
           const wordElement = document.getElementById(`word-${wordIndex}`);     
-          const wordElement_2 = document.getElementById(`word-${wordIndex}`)?.previousSibling     
-
-          if (wordElement && wordElement_2) {
-           console.log('first', wordElement_2)
-            // wordElement.previousSibling.style.color="#FFFFFF"
-            wordElement_2.style.color="#FFFFFF";
+          // const wordElement_2 = document.getElementById(`word-${wordIndex}`)?.previousSibling   
+          if (wordElement) {
+            changePreviousSiblingStyle(wordElement) 
             wordElement.style.color="#F8A3F0";
             wordElement.scrollIntoView({ behavior: "smooth", block: "center" });
           }
@@ -67,6 +76,8 @@ function ScrollTTS() {
 
   // Function to split text into words and render them with ids for scrolling
   const wordsFilter: any = []
+  
+
   const renderTextWithSpans = () => {
     const wordIndex: number = 0;
     return text.split(" ").map((word, index) => (
