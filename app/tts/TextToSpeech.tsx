@@ -47,54 +47,64 @@ const TextToSpeech = ({ text }: LayoutProps) => {
       speakButton.addEventListener("click", handlePlay);
     }
 
-    //     return () => {
-    //       if (speakButton) {
-    //         speakButton.removeEventListener('click', handlePlay);
-    //       }
-    //     };
-    // =====
+
+    const handlePause = () => {
+      const synth = window.speechSynthesis;
+  
+      synth.pause();
+  
+      setIsPaused(true);
+  
+      const speakButton = document.getElementById("speakButton");
+      if (speakButton) {
+        speakButton.removeEventListener("click", handlePlay);
+      }
+    };
+
+
     return () => {
       if (speakButton) {
         speakButton.removeEventListener("click", handlePlay);
       }
+      
       synth.cancel();
     };
   }, [text]);
 
-  const handlePlay = () => {
-    const speakButton = document.getElementById("speakButton");
+  // const handlePlay = () => {
+  //   const speakButton = document.getElementById("speakButton");
 
-    if (speakButton) {
-      speakButton.addEventListener("click", handlePlay);
-    }
+  //   if (speakButton) {
+  //     speakButton.addEventListener("click", handlePlay);
+  //   }
 
-    const synth = window.speechSynthesis;
+  //   const synth = window.speechSynthesis;
 
-    if (isPaused) {
-      synth.resume();
-    } else {
-      utterance ? (utterance.voice = voice) : null;
-      utterance ? (utterance.pitch = pitch) : null;
-      utterance ? (utterance.rate = rate) : null;
-      utterance ? (utterance.volume = volume) : null;
-      utterance ? synth.speak(utterance) : null;
-    }
+  //   if (isPaused) {
+  //     synth.resume();
+  //   } else {
+  //     utterance ? (utterance.voice = voice) : null;
+  //     utterance ? (utterance.pitch = pitch) : null;
+  //     utterance ? (utterance.rate = rate) : null;
+  //     utterance ? (utterance.volume = volume) : null;
+  //     utterance ? synth.speak(utterance) : null;
+  //   }
 
-    setIsPaused(false);
-  };
+  //   setIsPaused(false);
+  // };
 
-  const handlePause = () => {
-    const synth = window.speechSynthesis;
+  // const handlePause = () => {
+  //   const synth = window.speechSynthesis;
 
-    synth.pause();
+  //   synth.pause();
 
-    setIsPaused(true);
+  //   setIsPaused(true);
 
-    const speakButton = document.getElementById("speakButton");
-    if (speakButton) {
-      speakButton.removeEventListener("click", handlePlay);
-    }
-  };
+  //   const speakButton = document.getElementById("speakButton");
+  //   if (speakButton) {
+  //     speakButton.removeEventListener("click", handlePlay);
+  //   }
+  // };
 
   const handleStop = () => {
     const synth = window.speechSynthesis;
@@ -201,11 +211,11 @@ const TextToSpeech = ({ text }: LayoutProps) => {
           border: "1px solid #EEE,",
           padding: "10px 25px 10px 25px",
         }}
-        onClick={handlePlay}
+        // onClick={handlePlay}
         id={"speakButton"}
       >
-        Play
-        {/* {isPaused ? "Resume" : "Play"} */}
+        {/* Play */}
+        {isPaused ? "Resume" : "Play"}
       </button>
       <button
         style={{
@@ -213,7 +223,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
           border: "1px solid #EEE,",
           padding: "10px 25px 10px 25px",
         }}
-        onClick={handlePause}
+        // onClick={handlePause}
       >
         Pause
       </button>
