@@ -4,9 +4,11 @@ interface LayoutProps {
   text: string;
 }
 const TextToSpeech = ({ text }: LayoutProps) => {
-// const TextToSpeech = ({ text }) => {
+  // const TextToSpeech = ({ text }) => {
   const [isPaused, setIsPaused] = useState(false);
-  const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
+  const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(
+    null
+  );
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
@@ -16,7 +18,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     const synth = window.speechSynthesis;
     const u = new SpeechSynthesisUtterance(text);
     const voices = synth.getVoices();
-    
+
     setUtterance(u);
     setVoice(voices[0]);
 
@@ -31,12 +33,11 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     if (isPaused) {
       synth.resume();
     } else {
-      
-      utterance ? utterance.voice = voice : null
-      utterance ? utterance.pitch = pitch : null
-      utterance ? utterance.rate = rate : null
-      utterance ? utterance.volume = volume : null
-      utterance ? synth.speak(utterance) : null
+      utterance ? (utterance.voice = voice) : null;
+      utterance ? (utterance.pitch = pitch) : null;
+      utterance ? (utterance.rate = rate) : null;
+      utterance ? (utterance.volume = volume) : null;
+      utterance ? synth.speak(utterance) : null;
     }
 
     setIsPaused(false);
@@ -60,7 +61,11 @@ const TextToSpeech = ({ text }: LayoutProps) => {
 
   const handleVoiceChange = (event: any) => {
     const voices = window.speechSynthesis.getVoices();
-    voices ? setVoice(voices.find((v) => v.name === event.target.value)) : null
+    setVoice(
+      voices
+        ? voices.find((v) => v.name === event.target.value)
+        : voices.find((v) => v.name === undefined)
+    );
   };
 
   const handlePitchChange = (event: any) => {
@@ -80,11 +85,13 @@ const TextToSpeech = ({ text }: LayoutProps) => {
       <label>
         Voice:
         <select value={voice?.name} onChange={handleVoiceChange}>
-          { typeof window !== 'undefined' && window.speechSynthesis ? window.speechSynthesis.getVoices().map((voice) => (
-            <option key={voice.name} value={voice.name}>
-              {voice.name}
-            </option>
-          )) : null}
+          {typeof window !== "undefined" && window.speechSynthesis
+            ? window.speechSynthesis.getVoices().map((voice) => (
+                <option key={voice.name} value={voice.name}>
+                  {voice.name}
+                </option>
+              ))
+            : null}
         </select>
       </label>
 
@@ -138,9 +145,36 @@ const TextToSpeech = ({ text }: LayoutProps) => {
       <br />
       <br />
 
-      <button style={{marginRight: 20, border: '1px solid #EEE,', padding: '10px 25px 10px 25px'}} onClick={handlePlay}>{isPaused ? "Resume" : "Play"}</button>
-      <button style={{marginRight: 20, border: '1px solid #EEE,', padding: '10px 25px 10px 25px'}} onClick={handlePause}>Pause</button>
-      <button style={{marginRight: 20, border: '1px solid #EEE,', padding: '10px 25px 10px 25px'}} onClick={handleStop}>Stop</button>
+      <button
+        style={{
+          marginRight: 20,
+          border: "1px solid #EEE,",
+          padding: "10px 25px 10px 25px",
+        }}
+        onClick={handlePlay}
+      >
+        {isPaused ? "Resume" : "Play"}
+      </button>
+      <button
+        style={{
+          marginRight: 20,
+          border: "1px solid #EEE,",
+          padding: "10px 25px 10px 25px",
+        }}
+        onClick={handlePause}
+      >
+        Pause
+      </button>
+      <button
+        style={{
+          marginRight: 20,
+          border: "1px solid #EEE,",
+          padding: "10px 25px 10px 25px",
+        }}
+        onClick={handleStop}
+      >
+        Stop
+      </button>
     </div>
   );
 };
