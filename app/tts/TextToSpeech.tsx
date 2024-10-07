@@ -62,11 +62,11 @@ const TextToSpeech = ({ text }: LayoutProps) => {
   const handleVoiceChange = (event: any) => {
     const voices = window.speechSynthesis.getVoices();
     
-    setVoice(
-      typeof window !== "undefined" && window.speechSynthesis.getVoices()
-        ? window.speechSynthesis.getVoices().find((v) => v.name === event.target.value)
-        : null
-    );
+    // setVoice(
+    //   typeof window !== "undefined" && window.speechSynthesis.getVoices()
+    //     ? window.speechSynthesis.getVoices().find((v) => v.name === event.target.value)
+    //     : null
+    // );
     // setVoice(
     // voices
     //     ? voices.find((v) => v.name === event.target.value)
