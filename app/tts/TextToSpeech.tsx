@@ -12,7 +12,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState(0.5);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -190,7 +190,8 @@ const TextToSpeech = ({ text }: LayoutProps) => {
         onClick={handlePlay}
         id={"speakButton"}
       >
-        {isPaused ? "Resume" : "Play"}
+        Play
+        {/* {isPaused ? "Resume" : "Play"} */}
       </button>
       <button
         style={{
