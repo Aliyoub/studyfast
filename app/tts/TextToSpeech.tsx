@@ -36,7 +36,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
       utterance ? utterance.pitch = pitch : null
       utterance ? utterance.rate = rate : null
       utterance ? utterance.volume = volume : null
-      synth.speak(utterance);
+      utterance ? synth.speak(utterance) : null
     }
 
     setIsPaused(false);
