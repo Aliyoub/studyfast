@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-const TextToSpeech = ({ text }) => {
+interface LayoutProps {
+  text: string;
+}
+const TextToSpeech = ({ text }: LayoutProps) => {
+// const TextToSpeech = ({ text }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [utterance, setUtterance] = useState(null);
   const [voice, setVoice] = useState(null);
