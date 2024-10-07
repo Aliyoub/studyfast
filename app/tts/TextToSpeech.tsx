@@ -22,16 +22,16 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     setUtterance(u);
     setVoice(voices[0]);
     // =====
-        // const speakButton = document.getElementById('speakButton');
+    // const speakButton = document.getElementById('speakButton');
 
     //     const handleClick = () => {
     //       const utterance = new SpeechSynthesisUtterance('Hello, this is a test.');
     //       window.speechSynthesis.speak(utterance);
     //     };
 
-        // if (speakButton) {
-        //   speakButton.addEventListener('click', handlePlay);
-        // }
+    // if (speakButton) {
+    //   speakButton.addEventListener('click', handlePlay);
+    // }
 
     //     return () => {
     //       if (speakButton) {
@@ -48,12 +48,11 @@ const TextToSpeech = ({ text }: LayoutProps) => {
   }, [text]);
 
   const handlePlay = () => {
+    const speakButton = document.getElementById("speakButton");
 
-    const speakButton = document.getElementById('speakButton');
     if (speakButton) {
-      speakButton.addEventListener('click', handlePlay);
+      speakButton.addEventListener("click", handlePlay);
     }
-
 
     const synth = window.speechSynthesis;
 
@@ -76,13 +75,17 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     synth.pause();
 
     setIsPaused(true);
+
+    const speakButton = document.getElementById("speakButton");
+    if (speakButton) {
+      speakButton.removeEventListener("click", handlePlay);
+    }
   };
 
   const handleStop = () => {
     const synth = window.speechSynthesis;
 
     synth.cancel();
-
     setIsPaused(false);
   };
 
@@ -185,7 +188,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
           padding: "10px 25px 10px 25px",
         }}
         onClick={handlePlay}
-        id="speakButton"
+        id={"speakButton"}
       >
         {isPaused ? "Resume" : "Play"}
       </button>
