@@ -15,36 +15,43 @@ const TextToSpeech = ({ text }: LayoutProps) => {
   const [volume, setVolume] = useState(1);
 
   useEffect(() => {
+
+    // =======================================================
     const synth = window.speechSynthesis;
-    const u = new SpeechSynthesisUtterance(text);
-    const voices = synth.getVoices();
 
-    setUtterance(u);
-    setVoice(voices[0]);
-    // =====
-        const speakButton = document.getElementById('speakButton');
 
-    //     const handleClick = () => {
-    //       const utterance = new SpeechSynthesisUtterance('Hello, this is a test.');
-    //       window.speechSynthesis.speak(utterance);
-    //     };
+    // return () => {
+    //   synth.cancel();
+    // };
 
-        if (speakButton) {
-          speakButton.addEventListener('click', handlePlay);
-        }
+    
+    // This code will only run in the browser
+    const speakButton = document.getElementById('speakButton');
 
-    //     return () => {
-    //       if (speakButton) {
-    //         speakButton.removeEventListener('click', handlePlay);
-    //       }
-    //     };
-    // =====
+    const handleClick = (text: any) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      synth.speak(utterance);
+      // window.speechSynthesis.speak(utterance);
+      // const u = new SpeechSynthesisUtterance(text);
+      const voices = synth.getVoices();
+  
+      setUtterance(utterance);
+      setVoice(voices[0]);
+    };
+
+    if (speakButton) {
+      speakButton.addEventListener('click', handleClick);
+    }
+
+    // Cleanup function to remove the event listener when the component unmounts
     return () => {
       if (speakButton) {
-        speakButton.removeEventListener("click", handlePlay);
+        speakButton.removeEventListener('click', handleClick);
       }
-      synth.cancel();
     };
+    
+    // =======================================================
+
   }, [text]);
 
   const handlePlay = () => {
@@ -81,7 +88,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
 
   const handleVoiceChange = (event: any) => {
     const voices = window.speechSynthesis.getVoices();
-
+    
     // setVoice(
     //   typeof window !== "undefined" && window.speechSynthesis.getVoices()
     //     ? window.speechSynthesis.getVoices().find((v) => v.name === event.target.value)
@@ -177,8 +184,8 @@ const TextToSpeech = ({ text }: LayoutProps) => {
           border: "1px solid #EEE,",
           padding: "10px 25px 10px 25px",
         }}
-        onClick={handlePlay}
         id="speakButton"
+        onClick={handlePlay}
       >
         {isPaused ? "Resume" : "Play"}
       </button>

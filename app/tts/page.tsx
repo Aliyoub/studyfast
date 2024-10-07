@@ -19,7 +19,6 @@ const [text, setText] = useState("");
 
 
 // useEffect(() => {
-//     // This code will only run in the browser
 //     const speakButton = document.getElementById('speakButton');
 
 //     const handleClick = () => {
@@ -31,13 +30,12 @@ const [text, setText] = useState("");
 //       speakButton.addEventListener('click', handleClick);
 //     }
 
-//     // Cleanup function to remove the event listener when the component unmounts
 //     return () => {
 //       if (speakButton) {
 //         speakButton.removeEventListener('click', handleClick);
 //       }
 //     };
-//   }, []); // Empty dependency array ensures this runs only once after the initial render
+//   }, []); 
 
   return (
     <>
