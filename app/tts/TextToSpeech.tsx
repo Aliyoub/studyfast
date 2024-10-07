@@ -60,7 +60,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
 
   const handleVoiceChange = (event: any) => {
     const voices = window.speechSynthesis.getVoices();
-    setVoice(voices.find((v) => v.name === event.target.value));
+    voices ? setVoice(voices.find((v) => v.name === event.target.value)) : null
   };
 
   const handlePitchChange = (event: any) => {
