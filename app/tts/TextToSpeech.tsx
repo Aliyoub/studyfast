@@ -22,16 +22,30 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     setUtterance(u);
     setVoice(voices[0]);
     // =====
-    // const speakButton = document.getElementById('speakButton');
+    const speakButton = document.getElementById("speakButton");
 
-    //     const handleClick = () => {
-    //       const utterance = new SpeechSynthesisUtterance('Hello, this is a test.');
-    //       window.speechSynthesis.speak(utterance);
-    //     };
+    const handlePlay = () => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(utterance);
 
-    // if (speakButton) {
-    //   speakButton.addEventListener('click', handlePlay);
-    // }
+      const synth = window.speechSynthesis;
+
+      if (isPaused) {
+        synth.resume();
+      } else {
+        utterance ? (utterance.voice = voice) : null;
+        utterance ? (utterance.pitch = pitch) : null;
+        utterance ? (utterance.rate = rate) : null;
+        utterance ? (utterance.volume = volume) : null;
+        utterance ? synth.speak(utterance) : null;
+      }
+
+      setIsPaused(false);
+    };
+
+    if (speakButton) {
+      speakButton.addEventListener("click", handlePlay);
+    }
 
     //     return () => {
     //       if (speakButton) {
@@ -40,9 +54,9 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     //     };
     // =====
     return () => {
-      // if (speakButton) {
-      //   speakButton.removeEventListener("click", handlePlay);
-      // }
+      if (speakButton) {
+        speakButton.removeEventListener("click", handlePlay);
+      }
       synth.cancel();
     };
   }, [text]);
