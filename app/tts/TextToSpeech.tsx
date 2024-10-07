@@ -58,20 +58,20 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     setIsPaused(false);
   };
 
-  const handleVoiceChange = (event) => {
+  const handleVoiceChange = (event: any) => {
     const voices = window.speechSynthesis.getVoices();
     setVoice(voices.find((v) => v.name === event.target.value));
   };
 
-  const handlePitchChange = (event) => {
+  const handlePitchChange = (event: any) => {
     setPitch(parseFloat(event.target.value));
   };
 
-  const handleRateChange = (event) => {
+  const handleRateChange = (event: any) => {
     setRate(parseFloat(event.target.value));
   };
 
-  const handleVolumeChange = (event) => {
+  const handleVolumeChange = (event: any) => {
     setVolume(parseFloat(event.target.value));
   };
 
