@@ -6,7 +6,7 @@ interface LayoutProps {
 const TextToSpeech = ({ text }: LayoutProps) => {
 // const TextToSpeech = ({ text }) => {
   const [isPaused, setIsPaused] = useState(false);
-  const [utterance, setUtterance] = useState(null);
+  const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
   const [voice, setVoice] = useState(null);
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
