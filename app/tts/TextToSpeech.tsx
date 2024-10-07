@@ -15,16 +15,43 @@ const TextToSpeech = ({ text }: LayoutProps) => {
   const [volume, setVolume] = useState(1);
 
   useEffect(() => {
+
+    // =======================================================
     const synth = window.speechSynthesis;
-    const u = new SpeechSynthesisUtterance(text);
-    const voices = synth.getVoices();
 
-    setUtterance(u);
-    setVoice(voices[0]);
 
-    return () => {
-      synth.cancel();
+    // return () => {
+    //   synth.cancel();
+    // };
+
+    
+    // This code will only run in the browser
+    const speakButton = document.getElementById('speakButton');
+
+    const handleClick = (text: any) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      synth.speak(utterance);
+      // window.speechSynthesis.speak(utterance);
+      // const u = new SpeechSynthesisUtterance(text);
+      const voices = synth.getVoices();
+  
+      setUtterance(utterance);
+      setVoice(voices[0]);
     };
+
+    if (speakButton) {
+      speakButton.addEventListener('click', handleClick);
+    }
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      if (speakButton) {
+        speakButton.removeEventListener('click', handleClick);
+      }
+    };
+    
+    // =======================================================
+
   }, [text]);
 
   const handlePlay = () => {
@@ -157,6 +184,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
           border: "1px solid #EEE,",
           padding: "10px 25px 10px 25px",
         }}
+        id="speakButton"
         onClick={handlePlay}
       >
         {isPaused ? "Resume" : "Play"}
