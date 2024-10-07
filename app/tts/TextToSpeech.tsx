@@ -22,16 +22,16 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     setUtterance(u);
     setVoice(voices[0]);
     // =====
-        const speakButton = document.getElementById('speakButton');
+        // const speakButton = document.getElementById('speakButton');
 
     //     const handleClick = () => {
     //       const utterance = new SpeechSynthesisUtterance('Hello, this is a test.');
     //       window.speechSynthesis.speak(utterance);
     //     };
 
-        if (speakButton) {
-          speakButton.addEventListener('click', handlePlay);
-        }
+        // if (speakButton) {
+        //   speakButton.addEventListener('click', handlePlay);
+        // }
 
     //     return () => {
     //       if (speakButton) {
@@ -40,14 +40,21 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     //     };
     // =====
     return () => {
-      if (speakButton) {
-        speakButton.removeEventListener("click", handlePlay);
-      }
+      // if (speakButton) {
+      //   speakButton.removeEventListener("click", handlePlay);
+      // }
       synth.cancel();
     };
   }, [text]);
 
   const handlePlay = () => {
+
+    const speakButton = document.getElementById('speakButton');
+    if (speakButton) {
+      speakButton.addEventListener('click', handlePlay);
+    }
+
+
     const synth = window.speechSynthesis;
 
     if (isPaused) {
