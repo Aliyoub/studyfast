@@ -31,10 +31,11 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     if (isPaused) {
       synth.resume();
     } else {
-      utterance.voice = voice;
-      utterance.pitch = pitch;
-      utterance.rate = rate;
-      utterance.volume = volume;
+      
+      utterance ? utterance.voice = voice : null
+      utterance ? utterance.pitch = pitch : null
+      utterance ? utterance.rate = rate : null
+      utterance ? utterance.volume = volume : null
       synth.speak(utterance);
     }
 
