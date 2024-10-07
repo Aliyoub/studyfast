@@ -64,7 +64,7 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     setVoice(
       voices
         ? voices.find((v) => v.name === event.target.value)
-        : voices.find((v) => v.name === undefined)
+        : null
     );
   };
 
