@@ -8,14 +8,14 @@ import { contents } from './contents';
 const Page = () => {
 const [text, setText] = useState("");
 
-// useEffect(()=>{
-//     if ('speechSynthesis' in window) {
-//         alert("Speech synthesis is supported")
-//       } else {
-//         alert('Speech synthesis not supported on this device/browser.');
-//       }
+useEffect(()=>{
+    if ('speechSynthesis' in window) {
+        alert("Speech synthesis is supported")
+      } else {
+        alert('Speech synthesis not supported on this device/browser.');
+      }
       
-// },[])
+},[])
 
 
 // useEffect(() => {

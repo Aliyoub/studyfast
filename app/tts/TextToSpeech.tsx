@@ -8,19 +8,19 @@ const TextToSpeech = ({ text }: LayoutProps) => {
     // This code will only run in the browser
     const speakButton = document.getElementById('speakButton');
 
-    const handleClick = () => {
+    const handlePlay = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       window.speechSynthesis.speak(utterance);
     };
 
     if (speakButton) {
-      speakButton.addEventListener('click', handleClick);
+      speakButton.addEventListener('click', handlePlay);
     }
 
     // Cleanup function to remove the event listener when the component unmounts
     return () => {
       if (speakButton) {
-        speakButton.removeEventListener('click', handleClick);
+        speakButton.removeEventListener('click', handlePlay);
       }
     };
   }, []); // Empty dependency array ensures this runs only once after the initial render
