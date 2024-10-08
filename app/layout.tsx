@@ -11,6 +11,7 @@ import ViewWithBorderRadius from "@/components//ViewWithBorderRadius/ViewWithBor
 import BottomNavigation from "@/components/bottom-navigation/bottom-navigation";
 // import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Head from "next/head";
 // import { AcUnit } from '@mui/icons-material';
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,13 +41,18 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <html lang="fr">
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <meta name="theme-color" content="#000000" />
+      </Head>
       <body className={montserrat.className}>
         {/* <body className={inter.className}> */}
         {/* <Header /> */}
         <main>
           <Provider store={store}>{children}</Provider>
         </main>
-        <BottomNavigation  />
+        <BottomNavigation />
         {/* <BottomNavigation
           showLabels
           value={"value"}
