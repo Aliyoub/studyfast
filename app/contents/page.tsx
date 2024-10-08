@@ -8,6 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import { useRouter } from "next/navigation";
 import LongPressDoublePressComponent from "../../components/LongPressDoublePressComponent";
 import PlusButton from "../../components/PlusButton";
+import Head from "next/head";
 
 
 const Page = () => {
