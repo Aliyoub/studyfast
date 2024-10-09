@@ -4,6 +4,26 @@ import React from "react";
 import { contents } from "./contents";
 import { color } from "framer-motion";
 import { contents2 } from "./contents2";
+// import type { Metadata } from "next";
+// import  { Metadata } from "next";
+
+
+// export const metadata: Metadata = {
+//   title: "Study Fast",
+//   description: "Study Fast",
+  // metadataBase: new URL('https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css'),
+  // alternates: {
+  //   canonical: '/',
+  // },
+// };
+
+// export const metadata: Metadata = {
+// //   metadataBase: new URL('https://acme.com'),
+// // }
+// // export const metadata = {
+//   title: 'okokok',
+//   manifest: '/manifest.json'
+// }
 
 function ScrollTTS() {
   // const ScrollTTS = () => {

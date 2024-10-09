@@ -8,7 +8,6 @@ import ListItem from "@mui/material/ListItem";
 import { useRouter } from "next/navigation";
 import LongPressDoublePressComponent from "../../components/LongPressDoublePressComponent";
 import PlusButton from "../../components/PlusButton";
-import Head from "next/head";
 
 
 const Page = () => {
@@ -21,7 +20,6 @@ const Page = () => {
   const [contentsLength, setContentsLength] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
   const [count, setCount] = useState(0);
-
 
   useEffect(() => {
     // On récupère les données depuis la base de données dès le premier montage du composant
@@ -38,16 +36,15 @@ const Page = () => {
         // Voir plus bas dans la fonction addContent
         // setContentsLength(data.contents[data.contents.length - 1].id);
         setContents(data.contents);
-        console.log('all data',data);
+        console.log("all data", data);
       });
-      // console.log("content!!", data.contents);
-      // deleteContent(85)
-      // deleteContent(86)
-      // deleteContent(87)
-      // deleteContent(88)
-      // deleteContent(89)
+    // console.log("content!!", data.contents);
+    // deleteContent(85)
+    // deleteContent(86)
+    // deleteContent(87)
+    // deleteContent(88)
+    // deleteContent(89)
   }, []);
-
 
   const deleteContent = async (id: number) => {
     fetch("/api/contents", {
@@ -60,7 +57,6 @@ const Page = () => {
   };
 
   const dispatch = useDispatch<AppDispatch>();
-  
 
   // On récupère les valeurs d'un item après un clic dessus
   const getItemValues = (item: any) => {
@@ -70,40 +66,42 @@ const Page = () => {
 
   const router = useRouter();
 
+  
   return (
-    <div
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 20,
-        width: "100%",
-      }}
-    >
-      <div>
-        <h1>contents List</h1>
-        <List>
-          {contents.map(
-            (content) => (
-                <LongPressDoublePressComponent key={content.id}>
-                  <ListItem
-                    sx={{
-                      borderBottom: "1px solid",
-                      borderColor: "#EEE",
-                      color: "#B2B8C1",
-                      fontWeight: "bold",
-                    }}
-                    key={content.id} >
-                    {content.contentTitle}
-                  </ListItem>
-                </LongPressDoublePressComponent>
-              )
-          )}
-        </List>
-      </div>
+    <>
+      <div
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 20,
+          width: "100%",
+        }}
+      >
+        <div>
+          <h1>contents List</h1>
+          <List>
+            {contents.map((content) => (
+              <LongPressDoublePressComponent key={content.id}>
+                <ListItem
+                  sx={{
+                    borderBottom: "1px solid",
+                    borderColor: "#EEE",
+                    color: "#B2B8C1",
+                    fontWeight: "bold",
+                  }}
+                  key={content.id}
+                >
+                  {content.contentTitle}
+                </ListItem>
+              </LongPressDoublePressComponent>
+            ))}
+          </List>
+        </div>
 
-      <PlusButton onClick={() => router.push("/edit")} />
-    </div>
+        <PlusButton onClick={() => router.push("/edit")} />
+      </div>
+    </>
   );
 };
 
