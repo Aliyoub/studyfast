@@ -1,6 +1,6 @@
 {
     "name": "StudyFast",
-    "short_name": "SF",
+    "short_name": "StudyFast",
     "description": "Study Fast",
     "start_url": "/",
     "display": "standalone",
