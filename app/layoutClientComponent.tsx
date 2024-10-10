@@ -52,7 +52,7 @@ const LayoutClientComponent = ({ children }: LayoutProps) => {
         <main>
           <Provider store={store}>{children}</Provider>
         </main>
-        <BottomNavigation />
+        {/* <BottomNavigation /> */}
         {/* <BottomNavigation
           showLabels
           value={"value"}

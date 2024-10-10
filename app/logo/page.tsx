@@ -6,14 +6,15 @@ function page() {
   return (
     <div
       style={{
-        flex: 1,
+        display: "flex",
+        height: "100vh",
         alignItems: "center",
         width: "100%",
         flexDirection: "column",
         justifyContent: "center",
-        // backgroundColor: "#EEE",
-        height: '100%',
-        padding: 42
+        background: "#EEE",
+        // paddingBottom:10,
+        // paddingTop:10
       }}
     >
       <div className="shiny-background">
@@ -30,13 +31,21 @@ function page() {
             #fca4f0 75%
           );
           background-size: 200% 200%;
-          animation: shine 2s infinite linear;
+          animation: shine 12s infinite linear;
           border-radius: 50%;
-          width: 600px;
-          height: 600px;
+          width: 2000px;
+          height: 2000px;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
+        // @keyframes shine {
+        //   10% {
+        //     background-position: 0% 50%;
+        //   }
+        //   100% {
+        //     background-position: 100% 50%;
+        //   }
+        // }
         // @keyframes shine {
         //   0% {
         //     background-position: 0% 50%;
