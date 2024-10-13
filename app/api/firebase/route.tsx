@@ -1,6 +1,7 @@
 import * as AWS from 'aws-sdk';
 
-export default async function handler(req, res) {
+export default async function POST(req, res) {
+// export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { fileName, fileType } = req.body;
 
