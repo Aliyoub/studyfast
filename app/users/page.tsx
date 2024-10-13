@@ -1,0 +1,103 @@
+"use client";
+
+import firebase from "firebase/compat/app";
+import { auth } from "../../components/firebase/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
+import { db, todolistsCoursesRef } from "../../components/Chat/Chat";
+import SignIn from "../login/SignIn";
+import { useEffect, useState } from "react";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  Timestamp,
+  FieldValue,
+  setDoc,
+  onSnapshot,
+  QuerySnapshot,
+  query,
+  where
+} from "firebase/firestore";
+import { addToFirestore, addMessageToFirestore } from "../../components/firebase/firestoreDatabase";
+import Chat from "../../components/Chat/Chat"
+
+
+function Home({ Component, pageProps }) {
+
+  useEffect(()=>{
+    // addToFirestore()
+    
+    let unsubscribeCourses;
+    // export async function queryForCoursesDocuments(){
+      const coursesQuery = query(
+        collection(db, 'todolists'),
+        // where('todolists', '==', 'courses')
+      );
+      const coursesData = [];
+      unsubscribeCourses = onSnapshot(
+        coursesQuery,
+        (QuerySnapshot) => {
+      // console.log('JSON.stringify', JSON.stringify(QuerySnapshot.docs))
+      // console.log('JSON.stringify', JSON.stringify(QuerySnapshot.docs.map((e) => e.data())[0].courses))
+      // console.log('JSON.stringify', JSON.stringify(QuerySnapshot.docs.map((e) => e.data())))
+      // coursesData.push({ ...QuerySnapshot.docs.map((e) => e.data()['toilette'])});
+      // console.log('coursesData', Object.values(coursesData[0][1]))
+      // coursesData.push({ ...QuerySnapshot.docs.map((e) => e.data())[0].courses})
+      QuerySnapshot.docs.map((e) => coursesData.push({...e.data()}))
+      // console.log('coursesDataok', coursesData)
+      return coursesData
+        })
+    // }
+  // )}
+  },[])
+
+  const [user, loading, error] = useAuthState(auth);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error!!: {error.message}</div>;
+
+  const Login = () => (
+    <div>
+      <h2>Please login</h2>
+      <button
+        onClick={() =>
+          auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        }
+      >
+        Sign in with Google
+      </button>
+    </div>
+  );
+
+  const router = useRouter();
+  // <PlusButton onClick={() => router.push("/edit")} />
+
+  return (
+    <div>
+      <div>
+        {user ? (
+          <>
+          <div>Bienvenue {user.displayName}</div>
+          {/* <Component {...pageProps} /> */}
+          <Chat />
+          <button
+              onClick={() =>
+                auth.signOut()
+              }
+            >
+              Deconnexion
+            </button>
+          </>
+        ) : (
+          <Login />
+          // <SignIn />
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default Home;

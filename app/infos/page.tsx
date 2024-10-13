@@ -5,6 +5,7 @@ import {deleteContent } from '../../store/slices/content/contentSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../store/store';
 import Performance from '../../components/chart/_chart';
+import OCRComponent from '@/components/scanner/OCRComponent';
 
 
 function Home() {
@@ -14,7 +15,7 @@ function Home() {
 
 return (
 
-    <div>ok</div>
+    <OCRComponent />
 );
 }
 

@@ -15,6 +15,11 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 // import { AcUnit } from '@mui/icons-material';
 const inter = Inter({ subsets: ["latin"] });
 
+import { useEffect, useState } from 'react';
+import firebase from 'firebase/compat/app';
+
+import 'firebase/auth'; 
+
 const montserrat = Montserrat({
   weight: "400",
   subsets: ["latin"],
@@ -44,6 +49,29 @@ interface LayoutProps {
 
 // const LayoutClientComponent = () => {
 const LayoutClientComponent = ({ children }: LayoutProps) => {
+
+  // const [firebaseConfig, setFirebaseConfig] = useState(null);
+
+  // useEffect(() => {
+    // Fetch Firebase config from the API route
+    // async function fetchFirebaseConfig() {
+      // try {
+        // const res = await fetch('/api/firebase-config');
+        // const { firebaseConfig_ } = await res.json();
+        // setFirebaseConfig(firebaseConfig_);
+// 
+        // Initialize Firebase if not already initialized
+        // if (!firebase.apps.length && firebaseConfig) {
+          // firebase.initializeApp(firebaseConfig);
+        // }
+      // } catch (error) {
+        // console.error('Error loading Firebase config:', error);
+      // }
+    // }
+// 
+    // fetchFirebaseConfig();
+  // }, []);
+
   return (
     <html lang="fr">
       <body className={montserrat.className}>
@@ -52,7 +80,7 @@ const LayoutClientComponent = ({ children }: LayoutProps) => {
         <main>
           <Provider store={store}>{children}</Provider>
         </main>
-        {/* <BottomNavigation /> */}
+        <BottomNavigation />
         {/* <BottomNavigation
           showLabels
           value={"value"}

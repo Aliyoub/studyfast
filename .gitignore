@@ -27,6 +27,12 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+/components/Stripe/.env
+
+#
+firebase-config.json
+
 
 # vercel
 .vercel
@@ -34,4 +40,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/components/Stripe/.env
