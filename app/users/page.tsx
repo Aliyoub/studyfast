@@ -4,7 +4,8 @@ import firebase from "firebase/compat/app";
 import { auth } from "../../components/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import { useRouter } from "next/navigation";
-import { db, todolistsCoursesRef } from "../../components/Chat/Chat";
+// import { db, todolistsCoursesRef } from "../../components/Chat/Chat";
+
 import SignIn from "../login/SignIn";
 import { useEffect, useState } from "react";
 
@@ -22,7 +23,7 @@ import {
   where
 } from "firebase/firestore";
 import { addToFirestore, addMessageToFirestore } from "../../components/firebase/firestoreDatabase";
-import Chat from "../../components/Chat/Chat"
+// import Chat from "../../components/Chat/Chat"
 
 
 function Home() {
@@ -82,7 +83,7 @@ function Home() {
           <>
           <div>Bienvenue {user.displayName}</div>
           {/* <Component {...pageProps} /> */}
-          <Chat />
+          {/* <Chat /> */}
           <button
               onClick={() =>
                 auth.signOut()
