@@ -37,7 +37,7 @@ function Home() {
         collection(db, 'todolists'),
         // where('todolists', '==', 'courses')
       );
-      const coursesData = [];
+      const coursesData: any = [];
       unsubscribeCourses = onSnapshot(
         coursesQuery,
         (QuerySnapshot) => {
