@@ -25,7 +25,7 @@ import { addToFirestore, addMessageToFirestore } from "../../components/firebase
 import Chat from "../../components/Chat/Chat"
 
 
-function Home({ Component, pageProps }) {
+function Home() {
 
   useEffect(()=>{
     // addToFirestore()
