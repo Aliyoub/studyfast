@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import firebase from "firebase/compat/app";
 
 
-const page = () => {
+const Page = () => {
 
     const [firebaseConfig, setFirebaseConfig] = useState(null);
     const [contents, setContents] = useState<any[]>([]);
@@ -49,4 +49,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
