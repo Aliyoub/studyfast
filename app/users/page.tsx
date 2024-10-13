@@ -22,7 +22,7 @@ import {
   query,
   where
 } from "firebase/firestore";
-import { addToFirestore, addMessageToFirestore } from "../../components/firebase/firestoreDatabase";
+import { addToFirestore, addMessageToFirestore, db } from "../../components/firebase/firestoreDatabase";
 // import Chat from "../../components/Chat/Chat"
 
 
