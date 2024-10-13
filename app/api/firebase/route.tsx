@@ -19,8 +19,11 @@ const AWS = require("aws-sdk");
 export default async function GET() {
   // Configure AWS S3 access
   const s3 = new AWS.S3({
-    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+    // accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+    // secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+    AWS_ACCESS_KEY_ID: process.env.aws_access_key_id,
+    AWS_SECRET_ACCESS_KEY: process.env.aws_secret_access_key,
+    
     region: "us-east-1", // Example: 'us-east-1'
   });
 

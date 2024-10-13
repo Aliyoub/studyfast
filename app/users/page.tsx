@@ -3,7 +3,7 @@
 import firebase from "firebase/compat/app";
 import { auth } from "../../components/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { db, todolistsCoursesRef } from "../../components/Chat/Chat";
 import SignIn from "../login/SignIn";
 import { useEffect, useState } from "react";
@@ -72,7 +72,7 @@ function Home({ Component, pageProps }) {
     </div>
   );
 
-  const router = useRouter();
+  // const router = useRouter();
   // <PlusButton onClick={() => router.push("/edit")} />
 
   return (
