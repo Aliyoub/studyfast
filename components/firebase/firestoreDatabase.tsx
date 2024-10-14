@@ -10,14 +10,15 @@ import {
   onSnapshot,
   QuerySnapshot,
   query,
-  where
+  where,
+  db
 } from "./firebase";
 
 
 
 // import { tasksListArray } from "./database/sqlRequests";
 
-export const db = getFirestore();
+
 
 
 

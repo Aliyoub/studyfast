@@ -1,28 +1,16 @@
 "use client";
 
 import firebase from "firebase/compat/app";
-import { auth } from "../../components/firebase/firebase";
+import { auth, collection, db, onSnapshot, query } from "../../components/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import { useRouter } from "next/navigation";
 // import { db, todolistsCoursesRef } from "../../components/Chat/Chat";
 
 import SignIn from "../login/SignIn";
 import { useEffect, useState } from "react";
+import { Provider } from "react-redux";
 
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  Timestamp,
-  FieldValue,
-  setDoc,
-  onSnapshot,
-  QuerySnapshot,
-  query,
-  where
-} from "firebase/firestore";
-import { addToFirestore, addMessageToFirestore, db } from "../../components/firebase/firestoreDatabase";
+
 // import Chat from "../../components/Chat/Chat"
 
 
@@ -64,8 +52,10 @@ function Home() {
     <div>
       <h2>Please login</h2>
       <button
-        onClick={() =>
-          auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        onClick={async() =>
+          // auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+          // await firebase.auth().signInWithPopup(provider)
+          console.log('signInWithPopup', "signInWithPopup")
         }
       >
         Sign in with Google

@@ -5,6 +5,7 @@
 // import 'firebase/compat/storage';
 
 // import { initializeApp } from 'firebase/app';
+
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore,
@@ -56,6 +57,7 @@ const app = initializeApp(firebaseConfig);
 // Utiliser getAuth avec la nouvelle API
 const auth = getAuth(app);
 
+const db = getFirestore();
 
 export { auth, getFirestore, getStorage, collection,
   doc,
@@ -67,4 +69,4 @@ export { auth, getFirestore, getStorage, collection,
   onSnapshot,
   QuerySnapshot,
   query,
-  where  };
+  where, db  };
