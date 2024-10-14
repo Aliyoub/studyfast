@@ -21,7 +21,6 @@ import { getFirestore,
   query,
   where } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { useCollectionData } from 'react-firebase-hooks/firestore/dist/firestore/useCollection';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -70,4 +69,4 @@ export { auth, getFirestore, getStorage, collection,
   onSnapshot,
   QuerySnapshot,
   query,
-  where, db, useCollectionData  };
+  where, db  };
