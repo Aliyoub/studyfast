@@ -1,17 +1,25 @@
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// https://github.com/CSFrequency/react-firebase-hooks/blob/master/auth/useSignInWithPopup.ts
-
-
 // Firebase Initialization
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import 'firebase/compat/storage';
+// import firebase from 'firebase/compat/app';
+// import 'firebase/compat/auth';
+// import 'firebase/compat/firestore';
+// import 'firebase/compat/storage';
+
+// import { initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore,
+  collection,
+  doc,
+  getDocs,
+  Timestamp,
+  FieldValue,
+  setDoc,
+  addDoc,
+  onSnapshot,
+  QuerySnapshot,
+  query,
+  where } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -31,10 +39,32 @@ const firebaseConfig = {
 };
 
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(firebaseConfig);
+// }
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-export const storage = firebase.storage();
+// export const auth = firebase.auth();
+// export const firestore = firebase.firestore();
+// export const storage = firebase.storage();
+
+
+
+
+// Initialiser Firebase
+const app = initializeApp(firebaseConfig);
+
+// Utiliser getAuth avec la nouvelle API
+const auth = getAuth(app);
+
+
+export { auth, getFirestore, getStorage, collection,
+  doc,
+  getDocs,
+  Timestamp,
+  FieldValue,
+  setDoc,
+  addDoc,
+  onSnapshot,
+  QuerySnapshot,
+  query,
+  where  };

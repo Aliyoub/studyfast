@@ -1,20 +1,5 @@
 import { useState, useEffect } from "react";
-import { firestore, auth } from "../firebase/firebase";
-import {
-  useDocumentData,
-  useCollection,
-  useCollectionData,
-} from "react-firebase-hooks/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
-import firebase from "firebase/compat/app";
-import {
-  getFirestore,
-  doc,
-  collection,
-  query,
-  where,
-  orderBy,
-} from "firebase/firestore";
+import { auth, getFirestore } from "../firebase/firebase";
 
 import { addMessageToFirestore } from "../firebase/firestoreDatabase";
 

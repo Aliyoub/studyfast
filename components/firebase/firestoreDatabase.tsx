@@ -1,5 +1,3 @@
-// Import the functions you need from the SDKs you need
-// import { firebaseConfig } from "./firestoreConfig";
 import {
   getFirestore,
   collection,
@@ -7,14 +5,15 @@ import {
   getDocs,
   Timestamp,
   FieldValue,
-  Filter,
   setDoc,
   addDoc,
   onSnapshot,
   QuerySnapshot,
   query,
   where
-} from "firebase/firestore";
+} from "./firebase";
+
+
 
 // import { tasksListArray } from "./database/sqlRequests";
 
@@ -40,13 +39,13 @@ export const addToFirestore = () => {
 // }
 
 
-export async function readAsingleDocument(){
-  const mySnapshot = await getDocs(todolistsCoursesRef)
-  if (mySnapshot.exists()){
-    const docData = mySnapshot.data();
-    console.log('docData', JSON.stringify(docData))
-  }
-}
+// export async function readAsingleDocument(){
+//   const mySnapshot = await getDocs(todolistsCoursesRef)
+//   if (mySnapshot.exists()){
+//     const docData = mySnapshot.data();
+//     console.log('docData', JSON.stringify(docData))
+//   }
+// }
 
 // export const todolistsCourses = getDocs(todolistsCoursesRef).then((snapshot) => {
 //   let collection = [];
@@ -107,25 +106,25 @@ export const addMessageToFirestore = async (message) => {
 
 
 
-export const updateTaskInDB = async (
-  myTaskId, // myTaskId est l'id du document à mettre à jour
-  {text,
-  comment,
-  highlightedStatus,
-  notification}
-) => {
-  const taskRef = doc(db, "tasks", myTaskId);
-  await updateDoc(taskRef, {
-    text,
-    comment,
-    highlightedStatus,
-    notification,
-  });
-};
+// export const updateTaskInDB = async (
+//   myTaskId, // myTaskId est l'id du document à mettre à jour
+//   {text,
+//   comment,
+//   highlightedStatus,
+//   notification}
+// ) => {
+//   const taskRef = doc(db, "tasks", myTaskId);
+//   await updateDoc(taskRef, {
+//     text,
+//     comment,
+//     highlightedStatus,
+//     notification,
+//   });
+// };
 
-export const deleteTasksFromDB = async (myTaskId) => {
-  await deleteDoc(doc(db, "tasks", myTaskId));
-};
+// export const deleteTasksFromDB = async (myTaskId) => {
+//   await deleteDoc(doc(db, "tasks", myTaskId));
+// };
 
 // export const deleteTasksFromDB = async (myTaskId) => {
 //   await updateDoc(tasksRef, {
