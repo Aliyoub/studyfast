@@ -86,7 +86,7 @@ export const colRef2 = collection(db, "messages")
 
 // const tasksRef = db.collection("tasks").doc();
 // const tasksRef = doc(db, "todolists", "courses");
-export const addMessageToFirestore = async (message) => {
+export const addMessageToFirestore = async (message: any) => {
   await addDoc(collection(db, "testons"), message)
     .then((docRef2) => {
       console.log("Document successfully written! with this id:", docRef2.id);
