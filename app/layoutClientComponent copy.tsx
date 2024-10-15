@@ -14,7 +14,8 @@ import BottomControl from "../components/bottom-navigation/bottom-control";
 // import BottomNavigation from "../components/bottom-navigation/bottom-navigation2";
 // import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import Bottom from "@/components/bottom-navigation/bottom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../store/store";
 
 // import { AcUnit } from '@mui/icons-material';
 const inter = Inter({ subsets: ["latin"] });
@@ -47,6 +48,10 @@ interface LayoutProps {
 }
 
 const LayoutClientComponent = ({ children }: LayoutProps) => {
+  const controlStateFromStore = useSelector(
+    (state: RootState) => state.controlState.value
+  );
+
   return (
     <html lang="fr">
       <body className={montserrat.className}>
@@ -55,7 +60,12 @@ const LayoutClientComponent = ({ children }: LayoutProps) => {
         <main>
           <Provider store={store}>
             {children}
-            <Bottom />
+            {controlStateFromStore === "" ||
+            controlStateFromStore === "back" ? (
+              <BottomNavigation />
+            ) : (
+              <BottomControl />
+            )}
           </Provider>
         </main>
         {/* <BottomNavigation /> */}

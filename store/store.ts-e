@@ -9,7 +9,6 @@ import ttsPitchReducer from './slices/tts/ttsPitchSlice';
 import ttsRateReducer from './slices/tts/ttsRateSlice';
 import contentReducer from './slices/content/contentSlice';
 import selectedItemReducer from './slices/selectedItem/selectedItemSlice';
-import controlStateReducer from './slices/controlState/controlStateSlice';
 // import slices => Ne pas supprimer !!!
 
 export const store = configureStore({
@@ -20,7 +19,6 @@ export const store = configureStore({
     ttsRate: ttsRateReducer,
 	content: contentReducer,
 	selectedItem: selectedItemReducer,
-	controlState: controlStateReducer,
 // configureStore => Ne pas supprimer !!!
   },
 });
