@@ -91,7 +91,7 @@ const BottomNavigation = () => {
           }}
           href="infos"
         >
-          Question-Réponse
+          Question{"\n"}Réponse
         </Link>
       </div>
       <div
@@ -132,7 +132,7 @@ const BottomNavigation = () => {
           // href="./categories"
           onClick={()=> router.push("/categories")}
         >
-          Réviser en groupe
+          Réviser{"\n"}en groupe
         </span>
       </div>
     </div>
