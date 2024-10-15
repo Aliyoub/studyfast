@@ -4,7 +4,7 @@ import BottomNavigation from "./bottom-navigation";
 import BottomControl from "./bottom-control";
 import BottomNavigation2 from "./bottom-navigation2";
 
-const bottom = () => {
+const Bottom = () => {
   const controlStateFromStore = useSelector(
     (state: RootState) => state.controlState.value
   );
@@ -17,4 +17,4 @@ const bottom = () => {
   );
 };
 
-export default bottom;
+export default Bottom;
