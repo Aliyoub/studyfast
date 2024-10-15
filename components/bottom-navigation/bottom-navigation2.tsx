@@ -132,7 +132,7 @@ const BottomNavigation = () => {
           // href="./categories"
           onClick={()=> router.push("/categories")}
         >
-          Réviser{"\n"}en groupe
+          {"Réviser\nen groupe"}
         </span>
       </div>
     </div>
