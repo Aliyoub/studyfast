@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import { gestionClustersCards, flippedCards } from "./gestionClusters";
+import { clusterManagementCards, flippedCards } from "./clusterManagement";
 import { useRouter } from "next/navigation";
 
 const FlippingCards = () => {
@@ -21,25 +21,25 @@ const FlippingCards = () => {
         Retour
       </h2>
       <div className="card-container">
-        {gestionClustersCards.map((gestionClustersCard) => (
+        {clusterManagementCards.map((clusterManagementCard) => (
           <ReactCardFlip
-            key={gestionClustersCard.id}
-            isFlipped={isFlippedCard[gestionClustersCard.id]}
+            key={clusterManagementCard.id}
+            isFlipped={isFlippedCard[clusterManagementCard.id]}
           >
             <div
               className="card front"
               key="front"
-              onClick={() => handleFlip(gestionClustersCard.id)}
+              onClick={() => handleFlip(clusterManagementCard.id)}
             >
-              {gestionClustersCard.front}
+              {clusterManagementCard.front}
             </div>
 
             <div
               className="card back"
               key="back"
-              onClick={() => handleFlip(gestionClustersCard.id)}
+              onClick={() => handleFlip(clusterManagementCard.id)}
             >
-              {gestionClustersCard.back}
+              {clusterManagementCard.back}
             </div>
           </ReactCardFlip>
         ))}
