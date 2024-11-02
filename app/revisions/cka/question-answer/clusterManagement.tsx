@@ -1,4 +1,4 @@
-export const gestionClusterCards = [
+export const clusterManagementCards = [
     {
 id: 1,
 front: "Question 1 : Quelle commande permet d\'afficher les informations générales sur le cluster Kubernetes ?,\
@@ -329,3 +329,9 @@ back: "Réponse : b) etcdctl snapshot restore",
 isFlippedCard: false
 },
 ]
+
+export const flippedCards:any =[]
+clusterManagement.map((gestionClustersCard, index) => (
+  flippedCards.push(gestionClustersCard.isFlippedCard),
+  flippedCards.push(false)) // pour prendre en compte le dernier élément de la liste
+)
