@@ -331,7 +331,7 @@ isFlippedCard: false
 ]
 
 export const flippedCards:any =[]
-clusterManagement.map((gestionClustersCard, index) => (
-  flippedCards.push(gestionClustersCard.isFlippedCard),
+clusterManagementCards.map((clusterManagementCard, index) => (
+  flippedCards.push(clusterManagementCard.isFlippedCard),
   flippedCards.push(false)) // pour prendre en compte le dernier élément de la liste
 )
