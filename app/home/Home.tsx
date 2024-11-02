@@ -17,8 +17,8 @@ const Home = () => {
       <ul style={{textAlign: "justify" }}>
         {/* <ul style={{ margin: 30, textAlign: "justify", listStyleType: "disc" }}> */}
         <li>
-          Répétition espacée : Plutôt que d'écouter plusieurs fois le même
-          contenu en une seule session, il est plus efficace d'espacer les
+          Répétition espacée : Plutôt que d&#39écouter plusieurs fois le même
+          contenu en une seule session, il est plus efficace d&#39espacer les
           écoutes dans le temps. La répétition espacée est basée sur le fait que
           le cerveau retient mieux les informations quand elles sont répétées à
           des intervalles croissants (par exemple, après 1 jour, 3 jours, 1
@@ -26,16 +26,16 @@ const Home = () => {
         </li>
         <li>
           Répétition active : Au lieu de simplement réécouter passivement,
-          essaie de t'engager activement dans le processus d'apprentissage. Par
+          essaie de t&#39engager activement dans le processus d&#39apprentissage. Par
           exemple, après chaque écoute, pose-toi des questions sur le contenu ou
-          essaie de l'expliquer à quelqu'un d'autre. Cela t'aide à consolider
-          davantage l'information.
+          essaie de l&#39expliquer à quelqu&#39un d&#39autre. Cela t&#39aide à consolider
+          davantage l&#39information.
         </li>
 
         <li>
           Réfléchir et réviser : Après plusieurs écoutes, fais une pause pour
           réfléchir activement à ce que tu as retenu, et récapitule les points
-          principaux. Cela t'aide à identifier les zones où tu as besoin de plus
+          principaux. Cela t&#39aide à identifier les zones où tu as besoin de plus
           de travail.
         </li>
       </ul>
