@@ -2,6 +2,7 @@
 /app/edit/page.tsx
 /app/contents/
 /app/tts/
+/app/infos/
 /app/tesseract/page.tsx
 /app/tts/TextToSpeech.tsx
 /components/PlusButton.tsx
