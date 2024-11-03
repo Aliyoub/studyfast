@@ -68,6 +68,24 @@ export default function HomeCategories() {
           Question / Réponse
         </li>
       </ul>
+
+      <h2 style={{ fontSize: 20, fontWeight: "bold", marginTop: 30 }}>
+        BASH SHELL
+      </h2>
+      <ul style={{ width: '100%'}}>
+        <li
+          className="li-style"
+          onClick={() => router.push("/revisions/bash-shell/quiz")}
+        >
+          Quiz
+        </li>
+        <li
+          className="li-style"
+          onClick={() => router.push("/revisions/cka/question-answer")}
+        >
+          Question / Réponse
+        </li>
+      </ul>
       <style jsx>{`
         .li-style {
           padding: 10px;
