@@ -3,6 +3,9 @@
 /app/contents/
 /app/tts/
 /app/infos/
+/app/gg-cloud-storage/
+/app/gg-text-to-speech/
+/app/ggcloudvision/
 /app/tesseract/page.tsx
 /app/tts/TextToSpeech.tsx
 /components/PlusButton.tsx
