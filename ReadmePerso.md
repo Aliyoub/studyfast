@@ -5,6 +5,7 @@ gh auth logout
 
 
 <!-- Pour lancer l'application -->
+sudo rm -rf .next
 npx next dev
 
 <!-- j'automatise mes commits -->
