@@ -5,7 +5,7 @@ export const questions = [
       options:["a) ls -a" ,
       "b) ls -l" ,
       "c) ls -h"],
-    answer: "Réponse : a) ls -a",
+    answer: "a) ls -a",
   },
   {
     question:
@@ -13,7 +13,7 @@ export const questions = [
       options:["a) head -n 10 log.txt" ,
       "b) tail -n 10 log.txt" ,
       "c) cat log.txt | head -10"],
-    answer: "Réponse : a) head -n 10 log.txt",
+    answer: "a) head -n 10 log.txt",
   },
   {
     question:
@@ -21,7 +21,7 @@ export const questions = [
       options:["a) ps -aux" ,
       "b) top" ,
       "c) htop"],
-    answer: "Réponse : b) top",
+    answer: "b) top",
   },
   {
     question:
@@ -29,7 +29,7 @@ export const questions = [
       options:["a) find . -name config.yaml" ,
       "b) locate config.yaml" ,
       "c) grep config.yaml"],
-    answer: "Réponse : a) find . -name config.yaml",
+    answer: "a) find . -name config.yaml",
   },
   {
     question:
@@ -37,7 +37,7 @@ export const questions = [
       options:["a) >" ,
       "b) >>" ,
       "c) <<<"],
-    answer: "Réponse : b) >>",
+    answer: "b) >>",
   },
   {
     question:
@@ -45,7 +45,7 @@ export const questions = [
       options:["a) if [ $file = 'data.txt' ]; then" ,
       "b) if ( $file == 'data.txt' )" ,
       "c) if [ $file == data.txt ]"],
-    answer: "Réponse : a) if [ $file = 'data.txt' ]; then",
+    answer: "a) if [ $file = 'data.txt' ]; then",
   },
   {
     question:
@@ -53,7 +53,7 @@ export const questions = [
       options:["a) alias ll='ls -l'" ,
       "b) alias 'll' ls -l" ,
       "c) alias ls -l='ll'"],
-    answer: "Réponse : a) alias ll='ls -l'",
+    answer: "a) alias ll='ls -l'",
   },
   {
     question:
@@ -61,7 +61,7 @@ export const questions = [
       options:["a) sed 's/^/texte/' file.txt" ,
       "b) awk '{print \"texte\" $0}' file.txt",+
       "c) grep -r '^texte' file.txt"],
-    answer: "Réponse : a) sed 's/^/texte/' file.txt",
+    answer: "a) sed 's/^/texte/' file.txt",
   },
   {
     question:
@@ -69,7 +69,7 @@ export const questions = [
       options:["a) count sample.txt" ,
       "b) wc -l sample.txt" ,
       "c) lines sample.txt"],
-    answer: "Réponse : b) wc -l sample.txt",
+    answer: "b) wc -l sample.txt",
   },
   {
     question:
@@ -77,7 +77,7 @@ export const questions = [
       options:["a) let var=10" ,
       "b) var=10" ,
       "c) var: 10"],
-    answer: "Réponse : b) var=10",
+    answer: "b) var=10",
   },
   {
     question:
@@ -85,7 +85,7 @@ export const questions = [
       options:["a) bash install.sh" ,
       "b) ./install.sh" ,
       "c) exec install.sh"],
-    answer: "Réponse : b) ./install.sh",
+    answer: "b) ./install.sh",
   },
   {
     question:
@@ -93,7 +93,7 @@ export const questions = [
       options:["a) remove-alias alias_name" ,
       "b) unalias alias_name" ,
       "c) delete alias_name"],
-    answer: "Réponse : b) unalias alias_name",
+    answer: "b) unalias alias_name",
   },
   {
     question:
@@ -101,7 +101,7 @@ export const questions = [
       options:["a) grep -r 'error' ." ,
       "b) find . -name 'error'" ,
       "c) locate 'error'"],
-    answer: "Réponse : a) grep -r 'error' .",
+    answer: "a) grep -r 'error' .",
   },
   {
     question:
@@ -109,7 +109,7 @@ export const questions = [
       options:["a) awk '{print $1}' data.txt" ,
       "b) awk '{print $2}' data.txt" ,
       "c) awk '{print $3}' data.txt"],
-    answer: "Réponse : b) awk '{print $2}' data.txt",
+    answer: "b) awk '{print $2}' data.txt",
   },
   {
     question:
@@ -117,7 +117,7 @@ export const questions = [
       options:["a) sed 's/foo/bar/g' sample.txt" ,
       "b) sed 'replace foo with bar' sample.txt" ,
       "c) awk 's/foo/bar/g' sample.txt"],
-    answer: "Réponse : a) sed 's/foo/bar/g' sample.txt",
+    answer: "a) sed 's/foo/bar/g' sample.txt",
   },
   {
     question:
@@ -125,7 +125,7 @@ export const questions = [
       options:["a) for i in {1..5}; do echo $i; done" ,
       "b) for i = 1 to 5; echo $i" ,
       "c) for (i=1; i<=5; i++); echo $i;"],
-    answer: "Réponse : a) for i in {1..5}; do echo $i; done",
+    answer: "a) for i in {1..5}; do echo $i; done",
   },
   {
     question:
@@ -133,7 +133,7 @@ export const questions = [
       options:["a) uniq -u file.txt" ,
       "b) sort file.txt | uniq" ,
       "c) grep -u file.txt"],
-    answer: "Réponse : b) sort file.txt | uniq",
+    answer: "b) sort file.txt | uniq",
   },
   {
     question:
@@ -141,7 +141,7 @@ export const questions = [
       options:["a) export VAR=value" ,
       "b) VAR=value commande" ,
       "c) set VAR=value"],
-    answer: "Réponse : b) VAR=value commande",
+    answer: "b) VAR=value commande",
   },
   {
     question:
@@ -149,7 +149,7 @@ export const questions = [
       options:["a) commande > out.txt 2> err.txt" ,
       "b) commande > out.txt | err.txt" ,
       "c) commande 2> out.txt > err.txt"],
-    answer: "Réponse : a) commande > out.txt 2> err.txt",
+    answer: "a) commande > out.txt 2> err.txt",
   },
   {
     question:
@@ -157,7 +157,7 @@ export const questions = [
       options:["a) sed 's/ /-/g' text.txt" ,
       "b) sed 'replace spaces with dashes' te,t.txt" +
       "c) sed 's/-/ /g' text.txt"],
-    answer: "Réponse : a) sed 's/ /-/g' text.txt",
+    answer: "a) sed 's/ /-/g' text.txt",
   },
   {
     question:
@@ -165,7 +165,7 @@ export const questions = [
       options:["a) grep 'bash' notes.txt" ,
       "b) find 'bash' notes.txt" ,
       "c) locate 'bash' notes.txt"],
-    answer: "Réponse : a) grep 'bash' notes.txt",
+    answer: "a) grep 'bash' notes.txt",
   },
   {
     question:
@@ -173,7 +173,7 @@ export const questions = [
       options:["a) grep '^.....$' data.txt" ,
       "b) grep '^.{5}$' data.txt" ,
       "c) grep '^.....' data.txt"],
-    answer: "Réponse : a) grep '^.....$' data.txt",
+    answer: "a) grep '^.....$' data.txt",
   },
   {
     question:
@@ -181,7 +181,7 @@ export const questions = [
       options:["a) if [ -e config.yaml ]; then" ,
       "b) if test config.yaml" ,
       "c) if exists config.yaml"],
-    answer: "Réponse : a) if [ -e config.yaml ]; then",
+    answer: "a) if [ -e config.yaml ]; then",
   },
   {
     question:
@@ -189,7 +189,7 @@ export const questions = [
       options:["a) tar -rvf archive.tar.gz log.txt" ,
       "b) tar -av archive.tar.gz log.txt" ,
       "c) gzip archive.tar.gz log.txt"],
-    answer: "Réponse : a) tar -rvf archive.tar.gz log.txt",
+    answer: "a) tar -rvf archive.tar.gz log.txt",
   },
   {
     question:
@@ -197,6 +197,6 @@ export const questions = [
       options:["a) sed 's/  */ /g' text.txt" ,
       "b) sed 's/ / /g' text.txt" ,
       "c) sed 's/ */ /' text.txt"],
-    answer: "Réponse : a) sed 's/  */ /g' text.txt",
+    answer: "a) sed 's/  */ /g' text.txt",
   },
 ];
