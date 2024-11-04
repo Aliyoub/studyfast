@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { questions } from "./ckaStorage";
+import { questions } from "./ckaServicesNetworking";
 
 import Confetti from "react-confetti";
 
