@@ -1,89 +1,134 @@
+import React from 'react';
 import  '../../style.css'
-const page = () => {
-  return (
-    <div className='container' >
-         <h1>Types de Volumes Gérés par Kubernetes</h1>
 
-    <p>Kubernetes prend en charge plusieurs types de volumes, chacun ayant des utilisations spécifiques selon les besoins des applications et la persistance des données. Voici les principaux types de volumes supportés, avec leurs caractéristiques détaillées.</p>
-
-    <h2>1. <code>emptyDir</code></h2>
-    <p>
-        Le volume <code>emptyDir</code> est créé lorsqu’un Pod est assigné à un nœud et dure aussi longtemps que le Pod est actif. Ce volume est idéal pour le stockage temporaire des données, telles que des fichiers intermédiaires. Le contenu est supprimé si le Pod est supprimé ou redémarré.
-    </p>
-
-    <h2>2. <code>hostPath</code></h2>
-    <p>
-        Le volume <code>hostPath</code> permet à un Pod d'accéder au système de fichiers local du nœud. Cela peut être utilisé pour accéder à des fichiers de configuration ou pour du stockage de données spécifiques au nœud. Toutefois, il présente des risques en termes de sécurité et de portabilité car il dépend de la configuration locale du nœud.
-    </p>
-
-    <h2>3. <code>nfs</code> (Network File System)</h2>
-    <p>
-        Le volume <code>nfs</code> permet d’accéder à un partage de fichiers NFS depuis plusieurs nœuds. Il est souvent utilisé pour partager des données entre plusieurs Pods dans différents nœuds. Ce type de volume est persistant et le contenu reste disponible tant que le serveur NFS est opérationnel.
-    </p>
-
-    <h2>4. <code>persistentVolumeClaim</code> (PVC)</h2>
-    <p>
-        Un <code>persistentVolumeClaim</code> permet de demander un volume persistant prédéfini ou dynamique. Il sépare la gestion du stockage de l'application, permettant aux utilisateurs de demander un espace de stockage sans spécifier le type exact de volume sous-jacent (NFS, disque AWS EBS, etc.).
-    </p>
-
-    <h2>5. <code>configMap</code> et <code>secret</code></h2>
-    <p>
-        Les volumes <code>configMap</code> et <code>secret</code> permettent de fournir des configurations et des informations sensibles (comme des mots de passe) directement aux conteneurs. Les données sont montées en lecture seule et sont spécifiques à chaque Pod.
-    </p>
-
-    <h2>6. <code>awsElasticBlockStore</code> (AWS EBS)</h2>
-    <p>
-        Le volume <code>awsElasticBlockStore</code> est un volume persistant sur Amazon Web Services. Ce type de volume est attaché au Pod et peut être utilisé pour le stockage persistant d’applications s'exécutant dans AWS. Toutefois, ce volume est limité à une zone de disponibilité spécifique.
-    </p>
-
-    <h2>7. <code>gcePersistentDisk</code> (Google Cloud Persistent Disk)</h2>
-    <p>
-        Similaire à AWS EBS, le volume <code>gcePersistentDisk</code> fournit un stockage persistant sur Google Cloud Platform (GCP). Il est utilisable avec des instances Kubernetes s'exécutant sur GCP et peut être monté en lecture seule sur plusieurs nœuds.
-    </p>
-
-    <h2>8. <code>azureDisk</code> et <code>azureFile</code></h2>
-    <p>
-        Les volumes <code>azureDisk</code> et <code>azureFile</code> sont des options de stockage pour les clusters Kubernetes fonctionnant sur Microsoft Azure. <code>azureDisk</code> fournit un stockage bloc, tandis que <code>azureFile</code> permet d'accéder à des partages de fichiers Azure. Ils sont utilisés pour stocker des données persistantes et partager des fichiers entre Pods.
-    </p>
-
-    <h2>9. <code>cephFS</code></h2>
-    <p>
-        Le volume <code>cephFS</code> permet aux Pods d'accéder à un système de fichiers distribué Ceph. Ce type de volume est utile pour le stockage persistant haute disponibilité et le partage de données entre plusieurs Pods.
-    </p>
-
-    <h2>10. <code>cinder</code></h2>
-    <p>
-        <code>cinder</code> est un type de volume pour les clusters Kubernetes exécutés sur OpenStack. Ce volume fournit un stockage bloc persistant et est utilisé pour des applications nécessitant un stockage stable et disponible.
-    </p>
-
-    <h2>11. <code>iscsi</code> (Internet Small Computer Systems Interface)</h2>
-    <p>
-        Le volume <code>iscsi</code> utilise le protocole iSCSI pour fournir un stockage de blocs sur le réseau. Ce volume peut être partagé entre plusieurs Pods et est utile pour les applications nécessitant un accès rapide à des volumes de données distants.
-    </p>
-
-    <h2>12. <code>local</code></h2>
-    <p>
-        Le volume <code>local</code> offre un accès direct aux disques locaux des nœuds. Contrairement à <code>hostPath</code>, il est lié à un Pod spécifique et ne migre pas entre nœuds, ce qui le rend approprié pour des charges de travail spécifiques où la proximité des données est essentielle.
-    </p>
-
-    <h2>13. <code>projected</code></h2>
-    <p>
-        Le volume <code>projected</code> combine plusieurs sources de données (comme <code>configMap</code>, <code>secret</code>, etc.) dans un seul volume logique. Il est utilisé pour regrouper des données de configuration de différentes sources en un seul emplacement accessible par le Pod.
-    </p>
-
-    <h2>14. <code>downwardAPI</code></h2>
-    <p>
-        Le volume <code>downwardAPI</code> permet à un Pod d'accéder aux métadonnées de l’environnement Kubernetes, telles que les informations sur le Pod et les variables d'environnement. Ce volume est en lecture seule et utile pour adapter les comportements des conteneurs en fonction de leur environnement.
-    </p>
-
-    <h2>15. Volumes CSI (Container Storage Interface)</h2>
-    <p>
-        Les volumes <code>CSI</code> sont des volumes qui utilisent des plug-ins de stockage conformes à l'interface CSI, permettant ainsi aux administrateurs de connecter des solutions de stockage externes à Kubernetes. CSI offre une flexibilité pour l'intégration de divers systèmes de stockage.
-    </p>
-
-    <p>Ces différents types de volumes permettent de répondre à divers besoins d'applications déployées sur Kubernetes, en offrant des options pour le stockage temporaire, persistant, distribué et sécurisé.</p>
-    </div>
-  )
+interface VolumeType {
+  title: string;
+  utility: string;
+  functionality: string;
 }
 
-export default page
+const volumeTypes: VolumeType[] = [
+  {
+    title: 'emptyDir',
+    utility: "Permet de stocker des données temporaires pour un Pod, jusqu'à sa suppression ou son redémarrage.",
+    functionality:
+      "Un volume `emptyDir` est créé lorsqu'un Pod démarre et est supprimé lorsque le Pod est supprimé. Ce type de volume est utile pour des données temporaires partagées entre conteneurs d'un même Pod. Il est stocké sur le nœud de travail et non persistant en cas de redémarrage du Pod sur un autre nœud.",
+  },
+  {
+    title: 'hostPath',
+    utility: "Permet d'accéder à un répertoire du système de fichiers de l'hôte depuis un Pod.",
+    functionality:
+      "Le volume `hostPath` donne au Pod accès à une partie du système de fichiers de l'hôte. Ce type est utilisé pour des cas spécifiques, comme les journaux du système ou les fichiers de configuration locaux, mais peut présenter des risques de sécurité en exposant le système de fichiers de l'hôte.",
+  },
+  {
+    title: 'gcePersistentDisk',
+    utility: "Offre un stockage persistant en utilisant les disques persistants de Google Cloud.",
+    functionality:
+      "Le volume `gcePersistentDisk` permet de monter des disques persistants Google Compute Engine dans des Pods Kubernetes. Les données sont conservées même si le Pod ou le nœud est supprimé. Utilisé pour les clusters hébergés sur Google Cloud pour un stockage fiable et persistant.",
+  },
+  {
+    title: 'awsElasticBlockStore',
+    utility: "Stockage persistant avec Amazon Elastic Block Store (EBS), utilisé dans les clusters AWS.",
+    functionality:
+      "Le volume `awsElasticBlockStore` permet de monter des volumes EBS dans un Pod. Ces volumes sont persistants et réutilisables entre les Pods sur différents nœuds. Ils sont idéaux pour des applications nécessitant un stockage persistant et fiable dans les environnements AWS.",
+  },
+  {
+    title: 'nfs',
+    utility: "Partage de stockage entre plusieurs Pods via un serveur NFS externe.",
+    functionality:
+      "Le volume `nfs` permet de monter un système de fichiers NFS externe dans un Pod, permettant à plusieurs Pods d'accéder au même espace de stockage. Utilisé pour des applications ayant besoin d'un stockage partagé, accessible à partir de différents Pods.",
+  },
+  {
+    title: 'iscsi',
+    utility: "Permet l'accès à des volumes iSCSI pour des besoins de stockage réseau à faible latence.",
+    functionality:
+      "Le volume `iscsi` connecte les Pods à un système de stockage iSCSI. Il est souvent utilisé dans les environnements qui nécessitent un accès à des volumes de stockage à haute performance et faible latence.",
+  },
+  {
+    title: 'glusterfs',
+    utility: "Utilisé pour un stockage distribué et évolutif avec le système de fichiers GlusterFS.",
+    functionality:
+      "Le volume `glusterfs` permet aux Pods d'accéder au stockage distribué de GlusterFS. C'est idéal pour les applications nécessitant un système de fichiers extensible et hautement disponible.",
+  },
+  {
+    title: 'cephfs',
+    utility: "Stockage distribué persistant avec CephFS, utile pour les grandes applications.",
+    functionality:
+      "Le volume `cephfs` offre un accès réseau à un système de fichiers Ceph. Ce type de volume est persistant, distribué, et peut être monté par plusieurs Pods simultanément, idéal pour les applications à grande échelle nécessitant une grande fiabilité de stockage.",
+  },
+  {
+    title: 'persistentVolumeClaim (PVC)',
+    utility: "Facilite l'abstraction du stockage persistant et sa demande dynamique.",
+    functionality:
+      "Un `persistentVolumeClaim` permet aux utilisateurs de Kubernetes de demander un volume persistant sans spécifier les détails du stockage. Kubernetes associe le PVC à un PersistentVolume (PV) disponible, abstrait la gestion du stockage et permet une portabilité accrue.",
+  },
+  {
+    title: 'configMap',
+    utility: "Stocke des configurations externes à l'application pour les injecter dans des conteneurs.",
+    functionality:
+      "Un volume `configMap` permet de monter des fichiers de configuration ou variables d'environnement dans les conteneurs sans les intégrer directement au code de l'application. Cela permet de séparer la configuration du code et facilite la gestion des configurations par environnement.",
+  },
+  {
+    title: 'secret',
+    utility: "Stocke et monte des données sensibles, comme les mots de passe ou les clés API, dans des conteneurs.",
+    functionality:
+      "Un volume `secret` est utilisé pour stocker des informations sensibles de manière sécurisée. Les secrets sont encodés en Base64 et peuvent être montés dans les conteneurs pour les applications nécessitant des informations sensibles comme les certificats et les mots de passe.",
+  },
+  {
+    title: 'csi (Container Storage Interface)',
+    utility: "Facilite l'extension et l'intégration de nouveaux systèmes de stockage via une interface standardisée.",
+    functionality:
+      "Les volumes `csi` permettent à Kubernetes de s'intégrer avec des fournisseurs de stockage externes grâce au standard CSI. Cette interface permet de gérer le provisioning dynamique de volumes pour de multiples types de stockage, offrant une flexibilité accrue pour ajouter de nouveaux fournisseurs de stockage.",
+  },
+  {
+    title: 'projected',
+    utility: "Combine plusieurs sources de données en un seul volume.",
+    functionality:
+      "Un volume `projected` permet de combiner `configMaps`, `secrets`, et d'autres informations en un seul volume. Cela est utile pour centraliser les sources de données et simplifier la gestion des configurations complexes pour une application.",
+  },
+  {
+    title: 'downwardAPI',
+    utility: "Expose les métadonnées du Pod aux conteneurs via un volume ou des variables d'environnement.",
+    functionality:
+      "Le volume `downwardAPI` permet d'accéder aux informations système comme les labels et les annotations du Pod. C'est utile pour que les conteneurs récupèrent des informations dynamiques sans les hardcoder.",
+  },
+  {
+    title: 'azureDisk',
+    utility: "Utilisé pour attacher des disques Azure aux Pods dans un environnement Azure.",
+    functionality:
+      "Le volume `azureDisk` monte un disque persistant Azure dans un Pod, offrant un stockage persistant pour les clusters Kubernetes sur Azure. Cela permet de stocker les données des applications de manière persistante, même si les Pods redémarrent.",
+  },
+  {
+    title: 'azureFile',
+    utility: "Permet le partage de fichiers entre les Pods en utilisant un fichier partagé SMB sur Azure.",
+    functionality:
+      "Le volume `azureFile` permet de monter un partage de fichiers Azure dans un Pod, donnant un accès partagé à plusieurs Pods. Utilisé dans les clusters Azure, il est idéal pour les applications nécessitant un partage de fichiers stable entre Pods.",
+  },
+];
+
+const Page: React.FC = () => (
+  <div className='container'>
+    <h1>Types de Volumes dans Kubernetes</h1>
+    <p>
+      Kubernetes propose différents types de volumes pour répondre aux besoins de stockage des applications. Voici les volumes essentiels avec leur utilité et leur fonctionnement.
+    </p>
+
+    {volumeTypes.map((volume, index) => (
+      <div key={index}>
+        <h2>{volume.title}</h2>
+        <p>
+          <strong>Utilité :</strong> {volume.utility}
+        </p>
+        <p>
+          <strong>Fonctionnement :</strong> {volume.functionality}
+        </p>
+      </div>
+    ))}
+
+    <p>
+      Ces types de volumes permettent aux applications Kubernetes de gérer leurs données de manière flexible, persister les informations entre redémarrages, et faciliter la configuration dynamique et la sécurité des applications.
+    </p>
+  </div>
+);
+
+export default Page;

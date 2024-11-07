@@ -175,6 +175,14 @@ export default function HomeCategories() {
         >
           Networking
         </li>
+        <li
+          className="li-style"
+          onClick={() =>
+            router.push("/revisions/cka/services-and-networking/read/services")
+          }
+        >
+          Services
+        </li>
 
         {/* <li
           className="li-style"
