@@ -109,6 +109,12 @@ export default function HomeCategories() {
         >
           Storage
         </li>
+        <li
+          className="li-style"
+          onClick={() => router.push("/revisions/cka/storage/read")}
+        >
+          Les Volumes
+        </li>
 
         {/* <li
           className="li-style"
@@ -160,6 +166,14 @@ export default function HomeCategories() {
           }
         >
           Services and Networking
+        </li>
+        <li
+          className="li-style"
+          onClick={() =>
+            router.push("/revisions/cka/services-and-networking/read/networking")
+          }
+        >
+          Networking
         </li>
 
         {/* <li
